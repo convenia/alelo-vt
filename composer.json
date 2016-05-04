@@ -34,7 +34,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "AleloOrder\\Test\\": "tests/"
+            "Edbizarro\\AleloOrder\\Tests\\": "tests/"
         }
     },
     "config":{
