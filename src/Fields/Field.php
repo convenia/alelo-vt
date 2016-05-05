@@ -37,14 +37,16 @@ abstract class Field implements FieldInterface
 
     /**
      * @param $value
-     * @return $this
+     *
      * @throws \InvalidArgumentException
+     *
+     * @return $this
      */
     public function setValue($value)
     {
         $this->value = S::create($value)
             ->slugify('_')->toUpperCase();
-        
+
         return $this;
     }
 
@@ -60,6 +62,7 @@ abstract class Field implements FieldInterface
 
     /**
      * @param int $length
+     *
      * @return $this
      */
     public function setLength($length)
@@ -79,6 +82,7 @@ abstract class Field implements FieldInterface
 
     /**
      * @param int $position
+     *
      * @return $this
      */
     public function setPosition($position)

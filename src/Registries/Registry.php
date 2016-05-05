@@ -20,7 +20,7 @@ abstract class Registry implements RegistryInterface
     protected $length = 400;
 
     /**
-     * Final string
+     * Final string.
      *
      * @var string
      */
@@ -67,9 +67,6 @@ abstract class Registry implements RegistryInterface
         $this->generate();
     }
 
-    /**
-     *
-     */
     protected function fill()
     {
         foreach ($this->defaultFields as $field => $values) {
@@ -86,12 +83,12 @@ abstract class Registry implements RegistryInterface
         $this->resultString = Stringy::create('');
 
         /**
-         * @var $valueClass Field
+         * @var Field
          */
         foreach ($this->values as $valueName => $valueClass) {
             $this->resultString .= $valueClass->getValue();
         }
-        
+
         return $this->resultString;
     }
 

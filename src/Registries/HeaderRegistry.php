@@ -2,8 +2,8 @@
 
 namespace Edbizarro\AleloOrder\Registries;
 
-use Edbizarro\Alelo\Fields\Formats\FieldN;
 use Edbizarro\Alelo\Fields\Formats\FieldC;
+use Edbizarro\Alelo\Fields\Formats\FieldN;
 
 /**
  * Class HeaderRegistry.
@@ -15,11 +15,11 @@ class HeaderRegistry extends Registry
      */
     protected $defaultFields = [
         'registryType' => [
-            'format'   => FieldN::class,
-            'required' => true,
-            'position' => 1,
-            'length'   => 1,
-            'defaultValue' => 0
+            'format'       => FieldN::class,
+            'required'     => true,
+            'position'     => 1,
+            'length'       => 1,
+            'defaultValue' => 0,
         ],
         'orderDate' => [
             'format'   => FieldN::class,
@@ -28,10 +28,10 @@ class HeaderRegistry extends Registry
             'length'   => 8,
         ],
         'channel' => [
-            'format'   => FieldC::class,
-            'required' => true,
-            'position' => 10,
-            'length'   => 4,
+            'format'       => FieldC::class,
+            'required'     => true,
+            'position'     => 10,
+            'length'       => 4,
             'defaultValue' => 'A001',
         ],
         'name' => [
@@ -95,10 +95,10 @@ class HeaderRegistry extends Registry
             'length'   => 18,
         ],
         'layoutVersion' => [
-            'format'   => FieldN::class,
-            'required' => true,
-            'position' => 125,
-            'length'   => 3,
+            'format'       => FieldN::class,
+            'required'     => true,
+            'position'     => 125,
+            'length'       => 3,
             'defaultValue' => 7,
         ],
         'blankSpaces' => [
@@ -112,6 +112,6 @@ class HeaderRegistry extends Registry
             'required' => true,
             'position' => 395,
             'length'   => 6,
-        ]
+        ],
     ];
 }
