@@ -1,0 +1,5 @@
+finder:
+  exclude:
+    - "tests"
+  name:
+    - "*.php"
