@@ -10,7 +10,7 @@ use Edbizarro\Alelo\Fields\Formats\FieldN;
 class HeaderRegistry extends Registry
 {
     /**
-     * Header type = 0
+     * Header type = 0.
      *
      * @var int
      */
@@ -21,15 +21,15 @@ class HeaderRegistry extends Registry
      */
     protected $defaultFields = [
         'registryType' => [
-            'format' => FieldN::class,
+            'format'   => FieldN::class,
             'required' => false,
-            'length' => 1,
+            'length'   => 1,
             'position' => 1,
         ],
         'orderDate' => [
-            'format' => FieldN::class,
+            'format'   => FieldN::class,
             'required' => false,
-            'length' => 8,
+            'length'   => 8,
             'position' => 2,
         ],
     ];

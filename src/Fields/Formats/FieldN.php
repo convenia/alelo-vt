@@ -5,7 +5,7 @@ namespace Edbizarro\Alelo\Fields\Formats;
 use Edbizarro\Alelo\Fields\Field;
 
 /**
- * Class FieldN
+ * Class FieldN.
  */
 class FieldN extends Field
 {

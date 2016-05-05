@@ -3,7 +3,7 @@
 namespace Edbizarro\AleloOrder\Exceptions;
 
 /**
- * Class FieldNotExistsException
+ * Class FieldNotExistsException.
  */
 class FieldNotExistsException extends \Exception
 {

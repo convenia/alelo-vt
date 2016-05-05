@@ -11,21 +11,21 @@ use Edbizarro\AleloOrder\Interfaces\RegistryInterface;
 abstract class Registry implements RegistryInterface
 {
     /**
-     * Total length
+     * Total length.
      *
      * @var int
      */
     protected $length = 400;
 
     /**
-     * Registry type
+     * Registry type.
      *
      * @var int
      */
     protected $type;
 
     /**
-     * List of fields and his types
+     * List of fields and his types.
      *
      * @var array
      */
@@ -38,7 +38,9 @@ abstract class Registry implements RegistryInterface
 
     /**
      * Registry constructor.
+     *
      * @param array $fields
+     *
      * @throws \Edbizarro\AleloOrder\Exceptions\FieldNotExistsException
      */
     public function __construct(array $fields = [])
@@ -56,19 +58,13 @@ abstract class Registry implements RegistryInterface
         $this->generate();
     }
 
-    /**
-     *
-     */
     protected function fill()
     {
         foreach ($this->defaultFields as $field => $values) {
-            $this->values[$field] = (new $this->defaultFields[$field]['format']);
+            $this->values[$field] = (new $this->defaultFields[$field]['format']());
         }
     }
 
-    /**
-     * 
-     */
     public function generate()
     {
     }
@@ -78,6 +74,6 @@ abstract class Registry implements RegistryInterface
      */
     public function validateLength()
     {
-        return (strlen($this->generate()) !== $this->length);
+        return strlen($this->generate()) !== $this->length;
     }
 }
