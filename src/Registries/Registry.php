@@ -91,7 +91,7 @@ abstract class Registry implements RegistryInterface
         foreach ($this->values as $valueName => $valueClass) {
             $this->resultString .= $valueClass->getValue();
         }
-        var_dump($this->resultString);exit;
+        
         return $this->resultString;
     }
 
