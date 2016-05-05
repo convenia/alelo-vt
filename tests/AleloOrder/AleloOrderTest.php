@@ -5,7 +5,7 @@ namespace Edbizarro\AleloOrder\Tests;
 use Edbizarro\AleloOrder\AleloOrder;
 
 /**
- * Class AleloOrderTest
+ * Class AleloOrderTest.
  */
 class AleloOrderTest extends BaseTest
 {
