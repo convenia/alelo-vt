@@ -102,9 +102,9 @@ abstract class Registry implements RegistryInterface
      */
     public function validateLength()
     {
-       if (strlen($this->generate()) !== $this->length) {
-           throw new RegistryTooLongException();
-       }
+        if (strlen($this->generate()) !== $this->length) {
+            throw new RegistryTooLongException();
+        }
     }
 
     /**
