@@ -3,7 +3,7 @@
 namespace Edbizarro\AleloOrder\Interfaces;
 
 /**
- * Interface AleloOrderInterface
+ * Interface AleloOrderInterface.
  */
 interface AleloOrderInterface
 {
