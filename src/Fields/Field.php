@@ -57,7 +57,7 @@ abstract class Field implements FieldInterface
      */
     public function getValue()
     {
-        return $this->format();
+        return (string) $this->format();
     }
 
     /**

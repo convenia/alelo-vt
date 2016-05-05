@@ -53,6 +53,7 @@ abstract class Registry implements RegistryInterface
      * @param array $fields
      *
      * @throws \Edbizarro\AleloOrder\Exceptions\FieldNotExistsException
+     * @throws \Edbizarro\AleloOrder\Exceptions\RegistryTooLongException
      */
     public function __construct(array $fields = [])
     {
@@ -66,6 +67,7 @@ abstract class Registry implements RegistryInterface
             $this->values[$field]->setValue($value);
         }
 
+        $this->validateLength();
         $this->generate();
     }
 
