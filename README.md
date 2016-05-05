@@ -4,6 +4,7 @@
 
 ## Todo
 
+- [x] Formatação
 - [ ] Validação de dados
-- [ ] Geração de arquivos
+- [x] Geração de arquivos
 - [ ] Geração de arquivo para ambos os produtos da ALELO (Alimetação e Refeição)
