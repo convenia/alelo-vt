@@ -8,7 +8,7 @@ namespace Edbizarro\AleloOrder\Interfaces;
 interface AleloOrderInterface
 {
     /**
-     * Generate the alelo orders file
+     * Generate the alelo orders file.
      *
      * @return string
      */
