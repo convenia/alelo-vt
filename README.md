@@ -5,6 +5,6 @@
 ## Todo
 
 - [x] Formatação
-- [ ] Validação de dados
 - [x] Geração de arquivos
-- [ ] Geração de arquivo para ambos os produtos da ALELO (Alimetação e Refeição)
+- [ ] Validação de dados
+- [ ] Geração de arquivo para todos os produtos da ALELO (Alimentação, Refeição, Cesta, Natal, Combustivel)
