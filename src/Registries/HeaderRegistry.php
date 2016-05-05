@@ -112,13 +112,6 @@ class HeaderRegistry extends Registry
             'required' => true,
             'position' => 395,
             'length'   => 6,
-        ],
-        'returnCode' => [
-            'format'   => FieldC::class,
-            'required' => false,
-            'position' => 401,
-            'length'   => 50,
-            'defaultValue' => '',
-        ],
+        ]
     ];
 }

@@ -5,6 +5,7 @@ namespace Edbizarro\AleloOrder\Registries;
 use Edbizarro\Alelo\Fields\Field;
 use Edbizarro\AleloOrder\Exceptions\FieldNotExistsException;
 use Edbizarro\AleloOrder\Interfaces\RegistryInterface;
+use Stringy\Stringy;
 
 /**
  * Class Base Registry.
@@ -82,13 +83,15 @@ abstract class Registry implements RegistryInterface
 
     protected function generate()
     {
+        $this->resultString = Stringy::create('');
+
         /**
          * @var $valueClass Field
          */
         foreach ($this->values as $valueName => $valueClass) {
             $this->resultString .= $valueClass->getValue();
         }
-
+        var_dump($this->resultString);exit;
         return $this->resultString;
     }
 

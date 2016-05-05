@@ -16,6 +16,13 @@ class FieldC extends Field
      */
     public function format()
     {
+        $actualLength = $this->value->length();
+        $this->value = $this->value->truncate($this->length);
+
+        if ($actualLength < $this->length) {
+            $this->value = $this->value->padRight($this->length);
+        }
+
         return $this->value;
     }
 }

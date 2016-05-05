@@ -25,26 +25,8 @@ class HeaderRegistryTest extends BaseTest
     {
         $header = new HeaderRegistry([
             'orderDate' => '05052016',
-            'name' => 'Razão Social de Teste',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
-            'orderDate' => '05052016',
+            'name' => 'Razão ',
+
         ]);
 
         echo $header;exit;

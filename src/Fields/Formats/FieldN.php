@@ -16,6 +16,13 @@ class FieldN extends Field
      */
     public function format()
     {
+        $actualLength = $this->value->length();
+        $this->value = $this->value->truncate($this->length);
+
+        if ($actualLength < $this->length) {
+            $this->value = $this->value->padLeft($this->length, 0);
+        }
+
         return $this->value;
     }
 }
