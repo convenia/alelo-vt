@@ -9,7 +9,7 @@ use Edbizarro\AleloOrder\AleloOrder;
  */
 class AleloOrderTest extends BaseTest
 {
-    public function testInstantiate()
+    public function test_instantiate()
     {
         $aleloOrder = new AleloOrder();
 
