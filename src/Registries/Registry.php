@@ -4,6 +4,8 @@ namespace Edbizarro\AleloOrder\Registries;
 
 use Edbizarro\Alelo\Fields\Field;
 use Edbizarro\AleloOrder\Exceptions\FieldNotExistsException;
+use Edbizarro\AleloOrder\Exceptions\RegistryTooLong;
+use Edbizarro\AleloOrder\Exceptions\RegistryTooLongException;
 use Edbizarro\AleloOrder\Interfaces\RegistryInterface;
 use Stringy\Stringy;
 
@@ -86,18 +88,21 @@ abstract class Registry implements RegistryInterface
          * @var Field
          */
         foreach ($this->values as $valueName => $valueClass) {
-            $this->resultString .= $valueClass->getValue();
+            $this->resultString = $this->resultString->append($valueClass->getValue());
         }
 
-        return $this->resultString;
+        return (string) $this->resultString;
     }
 
     /**
      * @return bool
+     * @throws \Edbizarro\AleloOrder\Exceptions\RegistryTooLongException
      */
     public function validateLength()
     {
-        return strlen($this->generate()) !== $this->length;
+       if (strlen($this->generate()) !== $this->length) {
+           throw new RegistryTooLongException();
+       }
     }
 
     /**

@@ -17,10 +17,10 @@ class FieldN extends Field
     public function format()
     {
         $actualLength = $this->value->length();
-        $this->value = $this->value->truncate($this->length);
+        $this->value = $this->value->truncate($this->getLength());
 
-        if ($actualLength < $this->length) {
-            $this->value = $this->value->padLeft($this->length, 0);
+        if ($actualLength < $this->getLength()) {
+            $this->value = $this->value->padLeft($this->getLength(), 0);
         }
 
         return $this->value;

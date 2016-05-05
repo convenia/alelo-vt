@@ -33,4 +33,25 @@ class HeaderRegistryTest extends BaseTest
 
         $this->assertEquals($expected, (string)$header);
     }
+
+    public function test_complete_fields()
+    {
+        $header = new HeaderRegistry(
+            [
+                'orderDate' => '05052016',
+                'name' => 'Razão Social Com Caracteres Inválidos',
+                'cnpj' => '05315684000134',
+                'contractNumber' => 123456,
+                'benefitType' => 'RVV',
+                'orderType' => 1,
+                'accrualMonth' => '052016',
+                'custom' => 'qualquercoisa',
+                'registryId' => 1
+            ]
+        );
+
+        $expected = '005052016A001RAZAO_SOCIAL_COM_CARACTERES_INVALID05315684000134000000000000000012345600000000000000R1052016QUALQUERCOISA     007                                                                                                                                                                                                                                                                           000001';
+
+        $this->assertEquals($expected, (string)$header);
+    }
 }
