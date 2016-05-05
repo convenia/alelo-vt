@@ -8,3 +8,9 @@
 - [x] Geração de arquivos
 - [ ] Validação de dados
 - [ ] Geração de arquivo para todos os produtos da ALELO (Alimentação, Refeição, Cesta, Natal, Combustivel)
+
+        1 – Alimentacao (AVV)
+        2 – Refeição (RVV)
+        3 – Cesta (CVV)
+        4 – Natal (NVV)
+        5 – Combustivel (FVV)
