@@ -7,4 +7,8 @@ namespace Edbizarro\AleloOrder\Interfaces;
  */
 interface RegistryInterface
 {
+    /**
+     * @return bool
+     */
+    public function validateLength();
 }
