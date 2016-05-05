@@ -10,7 +10,9 @@ use Edbizarro\AleloOrder\Interfaces\AleloOrderInterface;
 class AleloOrder implements AleloOrderInterface
 {
     /**
-     * {@inheritdoc}
+     * Generate the alelo orders file.
+     *
+     * @return string
      */
     public function generate()
     {
