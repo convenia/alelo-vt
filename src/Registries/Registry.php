@@ -71,6 +71,9 @@ abstract class Registry implements RegistryInterface
         $this->generate();
     }
 
+    /**
+     * Fill the $values array with default and required values
+     */
     protected function fill()
     {
         foreach ($this->defaultFields as $field => $values) {
@@ -82,6 +85,11 @@ abstract class Registry implements RegistryInterface
         }
     }
 
+    /**
+     * Generate the full registry string
+     *
+     * @return string
+     */
     protected function generate()
     {
         $this->resultString = Stringy::create('');
@@ -97,6 +105,8 @@ abstract class Registry implements RegistryInterface
     }
 
     /**
+     * Validate if the generated result string matches the length
+     *
      * @return bool
      * @throws \Edbizarro\AleloOrder\Exceptions\RegistryTooLongException
      */
@@ -105,6 +115,8 @@ abstract class Registry implements RegistryInterface
         if (strlen($this->generate()) !== $this->length) {
             throw new RegistryTooLongException();
         }
+
+        return true;
     }
 
     /**
