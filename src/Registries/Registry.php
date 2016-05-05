@@ -2,6 +2,7 @@
 
 namespace Edbizarro\AleloOrder\Registries;
 
+use Edbizarro\Alelo\Fields\Field;
 use Edbizarro\AleloOrder\Exceptions\FieldNotExistsException;
 use Edbizarro\AleloOrder\Interfaces\RegistryInterface;
 
@@ -16,6 +17,13 @@ abstract class Registry implements RegistryInterface
      * @var int
      */
     protected $length = 400;
+
+    /**
+     * Final string
+     *
+     * @var string
+     */
+    protected $resultString;
 
     /**
      * Registry type.
@@ -58,15 +66,30 @@ abstract class Registry implements RegistryInterface
         $this->generate();
     }
 
+    /**
+     *
+     */
     protected function fill()
     {
         foreach ($this->defaultFields as $field => $values) {
-            $this->values[$field] = (new $this->defaultFields[$field]['format']());
+            $defaultValue = isset($this->defaultFields[$field]['defaultValue']) ? $this->defaultFields[$field]['defaultValue'] : null;
+
+            $this->values[$field] = (new $this->defaultFields[$field]['format']($defaultValue))
+                ->setPosition($this->defaultFields[$field]['position'])
+                ->setLength($this->defaultFields[$field]['length']);
         }
     }
 
-    public function generate()
+    protected function generate()
     {
+        /**
+         * @var $valueClass Field
+         */
+        foreach ($this->values as $valueName => $valueClass) {
+            $this->resultString .= $valueClass->getValue();
+        }
+
+        return $this->resultString;
     }
 
     /**
@@ -75,5 +98,13 @@ abstract class Registry implements RegistryInterface
     public function validateLength()
     {
         return strlen($this->generate()) !== $this->length;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->generate();
     }
 }

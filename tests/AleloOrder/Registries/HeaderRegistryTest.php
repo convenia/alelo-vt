@@ -24,9 +24,29 @@ class HeaderRegistryTest extends BaseTest
     public function test_fields()
     {
         $header = new HeaderRegistry([
-            'orderDate' => '05052016'
+            'orderDate' => '05052016',
+            'name' => 'Razão Social de Teste',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
+            'orderDate' => '05052016',
         ]);
 
-        var_dump($header);exit;
+        echo $header;exit;
     }
 }
