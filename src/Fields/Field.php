@@ -3,6 +3,7 @@
 namespace Edbizarro\Alelo\Fields;
 
 use Edbizarro\AleloOrder\Interfaces\FieldInterface;
+use Stringy\Stringy as S;
 
 /**
  * Class Field.
@@ -10,9 +11,19 @@ use Edbizarro\AleloOrder\Interfaces\FieldInterface;
 abstract class Field implements FieldInterface
 {
     /**
-     * @var string
+     * @var \Stringy\Stringy
      */
     protected $value;
+
+    /**
+     * @var int
+     */
+    protected $position;
+
+    /**
+     * @var int
+     */
+    protected $length;
 
     /**
      * Field constructor.
@@ -26,10 +37,15 @@ abstract class Field implements FieldInterface
 
     /**
      * @param $value
+     * @return $this
+     * @throws \InvalidArgumentException
      */
     public function setValue($value)
     {
-        $this->value = $value;
+        $this->value = S::create($value)
+            ->slugify('_')->toUpperCase();
+        
+        return $this;
     }
 
     /**
@@ -40,6 +56,44 @@ abstract class Field implements FieldInterface
     public function getValue()
     {
         return $this->format();
+    }
+
+    /**
+     * @param int $length
+     * @return $this
+     */
+    public function setLength($length)
+    {
+        $this->length = $length;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLength()
+    {
+        return $this->length;
+    }
+
+    /**
+     * @param int $position
+     * @return $this
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 
     /**
