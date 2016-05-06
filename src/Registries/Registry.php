@@ -6,6 +6,7 @@ use Edbizarro\Alelo\Fields\Field;
 use Edbizarro\AleloOrder\Exceptions\FieldNotExistsException;
 use Edbizarro\AleloOrder\Exceptions\RegistryTooLong;
 use Edbizarro\AleloOrder\Exceptions\RegistryTooLongException;
+use Edbizarro\AleloOrder\Fields\Validations\Validation;
 use Edbizarro\AleloOrder\Interfaces\RegistryInterface;
 use Stringy\Stringy;
 
@@ -48,15 +49,25 @@ abstract class Registry implements RegistryInterface
     protected $values = [];
 
     /**
+     * @var Validation
+     */
+    protected $validator;
+
+    /**
      * Registry constructor.
      *
      * @param array $fields
      *
      * @throws \Edbizarro\AleloOrder\Exceptions\FieldNotExistsException
      * @throws \Edbizarro\AleloOrder\Exceptions\RegistryTooLongException
+     * @throws \Edbizarro\AleloOrder\Exceptions\ValidatorInvalidRuleException
+     * @throws \Edbizarro\AleloOrder\Exceptions\ValidatorException
      */
     public function __construct(array $fields = [])
     {
+        $this->validator = new Validation();
+        $this->validator->make($this->defaultFields);
+
         $this->fill();
 
         foreach ($fields as $field => $value) {
@@ -66,6 +77,8 @@ abstract class Registry implements RegistryInterface
 
             $this->values[$field]->setValue($value);
         }
+
+        $this->validator->validate($fields);
 
         $this->validateLength();
         $this->generate();
@@ -77,7 +90,9 @@ abstract class Registry implements RegistryInterface
     protected function fill()
     {
         foreach ($this->defaultFields as $field => $values) {
-            $defaultValue = isset($this->defaultFields[$field]['defaultValue']) ? $this->defaultFields[$field]['defaultValue'] : null;
+            $defaultValue = isset($this->defaultFields[$field]['defaultValue']) ?
+                $this->defaultFields[$field]['defaultValue'] :
+                null;
 
             $this->values[$field] = (new $this->defaultFields[$field]['format']($defaultValue))
                 ->setPosition($this->defaultFields[$field]['position'])

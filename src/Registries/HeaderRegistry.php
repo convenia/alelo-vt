@@ -16,35 +16,40 @@ class HeaderRegistry extends Registry
     protected $defaultFields = [
         'registryType' => [
             'format'       => FieldN::class,
-            'required'     => true,
             'position'     => 1,
             'length'       => 1,
             'defaultValue' => 0,
         ],
         'orderDate' => [
             'format'   => FieldN::class,
-            'required' => true,
             'position' => 2,
             'length'   => 8,
+            'rules'    => [
+                'required',
+                'date:dmY',
+            ]
         ],
         'channel' => [
             'format'       => FieldC::class,
-            'required'     => true,
             'position'     => 10,
             'length'       => 4,
             'defaultValue' => 'A001',
         ],
         'name' => [
             'format'   => FieldC::class,
-            'required' => true,
             'position' => 14,
             'length'   => 35,
+            'rules'        => [
+                'required'
+            ],
         ],
         'cnpj' => [
             'format'   => FieldN::class,
-            'required' => true,
             'position' => 49,
             'length'   => 14,
+            'rules'        => [
+                'required'
+            ],
         ],
         'cpf' => [
             'format'   => FieldN::class,
@@ -54,9 +59,11 @@ class HeaderRegistry extends Registry
         ],
         'contractNumber' => [
             'format'   => FieldN::class,
-            'required' => true,
             'position' => 74,
             'length'   => 11,
+            'rules'        => [
+                'required'
+            ],
         ],
         'orderNumber' => [
             'format'   => FieldN::class,
@@ -72,46 +79,55 @@ class HeaderRegistry extends Registry
         ],
         'benefitType' => [
             'format'   => FieldN::class,
-            'required' => true,
             'position' => 99,
             'length'   => 1,
+            'rules'        => [
+                'required'
+            ],
         ],
         'orderType' => [
             'format'   => FieldN::class,
-            'required' => true,
             'position' => 100,
             'length'   => 1,
+            'rules'        => [
+                'required'
+            ],
         ],
         'accrualMonth' => [
             'format'   => FieldN::class,
-            'required' => true,
             'position' => 101,
             'length'   => 6,
+            'rules'        => [
+                'required'
+            ],
         ],
         'custom' => [
             'format'   => FieldC::class,
-            'required' => true,
             'position' => 107,
             'length'   => 18,
+            'rules'        => [
+                'required'
+            ],
         ],
         'layoutVersion' => [
             'format'       => FieldN::class,
-            'required'     => true,
             'position'     => 125,
             'length'       => 3,
             'defaultValue' => 7,
         ],
         'blankSpaces' => [
             'format'   => FieldC::class,
-            'required' => true,
             'position' => 128,
             'length'   => 267,
+            'defaultValue' => '',
         ],
         'registryId' => [
             'format'   => FieldN::class,
-            'required' => true,
             'position' => 395,
             'length'   => 6,
+            'rules'        => [
+                'required'
+            ],
         ],
     ];
 }
