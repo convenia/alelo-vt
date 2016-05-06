@@ -49,7 +49,7 @@ class Validation
      */
     public function validate(array $data)
     {
-        if(count($this->rules) === 0) {
+        if (count($this->rules) === 0) {
             return;
         }
 
