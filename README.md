@@ -14,3 +14,5 @@
         3 – Cesta (CVV)
         4 – Natal (NVV)
         5 – Combustivel (FVV)
+
+- [ ] Melhorar feedback da validação
