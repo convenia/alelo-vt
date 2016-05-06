@@ -16,3 +16,4 @@
         5 – Combustivel (FVV)
 
 - [ ] Melhorar feedback da validação
+- [ ] Criação de tipo de validação "requiredIf" que será usada em CPF/CNPJ
