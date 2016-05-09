@@ -6,7 +6,7 @@
 
 - [x] Formatação
 - [x] Geração de arquivos
-- [ ] Validação de dados
+- [x] Validação de dados
 - [ ] Geração de arquivo para todos os produtos da ALELO (Alimentação, Refeição, Cesta, Natal, Combustivel)
 
         1 – Alimentacao (AVV)
@@ -17,3 +17,4 @@
 
 - [ ] Melhorar feedback da validação
 - [ ] Criação de tipo de validação "requiredIf" que será usada em CPF/CNPJ
+- [ ] Existe validação entre registros, atualmente a validação é somente no escopo do registro, pensar em como deixar o escopo da validação global

@@ -53,7 +53,6 @@ class HeaderRegistry extends Registry
         ],
         'cpf' => [
             'format'   => FieldN::class,
-            'required' => false,
             'position' => 63,
             'length'   => 11,
         ],
@@ -67,13 +66,11 @@ class HeaderRegistry extends Registry
         ],
         'orderNumber' => [
             'format'   => FieldN::class,
-            'required' => false,
             'position' => 85,
             'length'   => 6,
         ],
         'orderScheduleDate' => [
             'format'   => FieldN::class,
-            'required' => false,
             'position' => 91,
             'length'   => 8,
         ],
