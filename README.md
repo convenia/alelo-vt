@@ -18,3 +18,31 @@
 - [ ] Melhorar feedback da validação
 - [ ] Criação de tipo de validação "requiredIf" que será usada em CPF/CNPJ
 - [ ] Existe validação entre registros, atualmente a validação é somente no escopo do registro, pensar em como deixar o escopo da validação global
+
+#### Códigos
+
+Cód. Escolaridade
+
+    1 Primeiro Grau
+    2 Segundo Grau
+    3 Superior
+    4 Pos
+
+Cód. Sexo
+
+    F Feminino
+    M Masculino
+
+Tipo do Doc.ID
+
+    1 RG
+    2 RNE
+    3 Passaporte
+
+Cód. Estado Civil
+
+    1 Solteiro
+    2 Casado
+    3 Viúvo
+    4 Separado
+    5 Outros
