@@ -15,7 +15,6 @@ class HeaderRegistryTest extends BaseTest
      */
     public function test_field_not_exists()
     {
-
         $header = new HeaderRegistry(
             [
                 'orderDate' => '05052016',
