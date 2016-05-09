@@ -2,6 +2,9 @@
 
 namespace Edbizarro\AleloOrder\Registries;
 
+use Edbizarro\Alelo\Fields\Formats\FieldN;
+use Edbizarro\Alelo\Fields\Formats\FieldC;
+
 /**
  * Class EmployeeRegistry.
  */
@@ -56,13 +59,149 @@ class EmployeeRegistry extends Registry
                 'required',
             ]
         ],
-        'tmpField' => [
+        'identityType' => [
+            'format'   => FieldC::class,
+            'position' => 100,
+            'length'   => 1,
+        ],
+        'identityNumber' => [
+            'format'   => FieldC::class,
+            'position' => 101,
+            'length'   => 13,
+        ],
+        'identityIssuer' => [
+            'format'   => FieldC::class,
+            'position' => 114,
+            'length'   => 20,
+        ],
+        'identityIssuerState' => [
+            'format'   => FieldC::class,
+            'position' => 134,
+            'length'   => 6,
+        ],
+        'pisNumber' => [
             'format'   => FieldN::class,
-            'position' => 89,
-            'length'   => 11,
+            'position' => 140,
+            'length'   => 15,
+        ],
+        'gender' => [
+            'format'   => FieldC::class,
+            'position' => 155,
+            'length'   => 1,
+        ],
+        'maritalStatus' => [
+            'format'   => FieldC::class,
+            'position' => 156,
+            'length'   => 1,
+        ],
+        'address' => [
+            'format'   => FieldC::class,
+            'position' => 157,
+            'length'   => 35,
+        ],
+        'addressAditional' => [
+            'format'   => FieldC::class,
+            'position' => 192,
+            'length'   => 10,
+        ],
+        'addressNumber' => [
+            'format'   => FieldN::class,
+            'position' => 202,
+            'length'   => 5,
+        ],
+        'zipcode' => [
+            'format'   => FieldN::class,
+            'position' => 207,
+            'length'   => 8,
+        ],
+        'city' => [
+            'format'   => FieldC::class,
+            'position' => 215,
+            'length'   => 28,
+        ],
+        'district' => [
+            'format'   => FieldC::class,
+            'position' => 243,
+            'length'   => 30,
+        ],
+        'state' => [
+            'format'   => FieldC::class,
+            'position' => 273,
+            'length'   => 2,
+        ],
+        'motherName' => [
+            'format'   => FieldC::class,
+            'position' => 275,
+            'length'   => 35,
+        ],
+        'addressType' => [
+            'format'   => FieldC::class,
+            'position' => 310,
+            'length'   => 1,
+        ],
+        'businessAreaCode' => [
+            'format'   => FieldN::class,
+            'position' => 311,
+            'length'   => 4,
+        ],
+        'businessPhone' => [
+            'format'   => FieldN::class,
+            'position' => 315,
+            'length'   => 8,
+        ],
+        'businessPhoneBranch' => [
+            'format'   => FieldN::class,
+            'position' => 323,
+            'length'   => 4,
+        ],
+        'homeAreaCode' => [
+            'format'   => FieldN::class,
+            'position' => 327,
+            'length'   => 4,
+        ],
+        'homePhone' => [
+            'format'   => FieldN::class,
+            'position' => 331,
+            'length'   => 8,
+        ],
+        'education' => [
+            'format'   => FieldC::class,
+            'position' => 339,
+            'length'   => 1,
+        ],
+        'admissionDate' => [
+            'format'   => FieldC::class,
+            'position' => 340,
+            'length'   => 8,
             'rules'    => [
-                'required',
+                'date:dmY',
             ]
+        ],
+        'reserved3' => [
+            'format'   => FieldC::class,
+            'position' => 348,
+            'length'   => 1,
+            'defaultValue' => '',
+        ],
+        'username' => [
+            'format'   => FieldC::class,
+            'position' => 349,
+            'length'   => 40,
+            'defaultValue' => '',
+        ],
+        'reserved4' => [
+            'format'   => FieldC::class,
+            'position' => 389,
+            'length'   => 6,
+            'defaultValue' => '',
+        ],
+        'registryId' => [
+            'format'   => FieldN::class,
+            'position' => 395,
+            'length'   => 6,
+            'rules'    => [
+                'required'
+            ],
         ],
     ];
 }

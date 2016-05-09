@@ -4,8 +4,8 @@ namespace Edbizarro\AleloOrder\Registries;
 
 use Edbizarro\Alelo\Fields\Field;
 use Edbizarro\AleloOrder\Exceptions\FieldNotExistsException;
-use Edbizarro\AleloOrder\Exceptions\RegistryTooLong;
 use Edbizarro\AleloOrder\Exceptions\RegistryTooLongException;
+use Edbizarro\AleloOrder\Exceptions\RegistryTooShortException;
 use Edbizarro\AleloOrder\Fields\Validations\Validation;
 use Edbizarro\AleloOrder\Interfaces\RegistryInterface;
 use Stringy\Stringy;
@@ -58,10 +58,6 @@ abstract class Registry implements RegistryInterface
      *
      * @param array $fields
      *
-     * @throws \Edbizarro\AleloOrder\Exceptions\FieldNotExistsException
-     * @throws \Edbizarro\AleloOrder\Exceptions\RegistryTooLongException
-     * @throws \Edbizarro\AleloOrder\Exceptions\ValidatorInvalidRuleException
-     * @throws \Edbizarro\AleloOrder\Exceptions\ValidatorException
      */
     public function __construct(array $fields = [])
     {
@@ -120,16 +116,20 @@ abstract class Registry implements RegistryInterface
 
     /**
      * Validate if the generated result string matches the length
-     *
      * @return bool
-     * @throws \Edbizarro\AleloOrder\Exceptions\RegistryTooLongException
+     * @throws RegistryTooLongException
+     * @throws RegistryTooShortException
      */
     public function validateLength()
     {
         $resultLength = strlen($this->generate());
-        
-        if ($resultLength !== $this->length) {
+
+        if ($resultLength > $this->length) {
             throw new RegistryTooLongException($resultLength);
+        }
+
+        if ($resultLength < $this->length) {
+            throw new RegistryTooShortException($resultLength);
         }
 
         return true;
