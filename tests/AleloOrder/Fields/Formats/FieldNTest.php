@@ -12,9 +12,9 @@ class FieldNTest extends BaseTest
 {
     public function test_format()
     {
-        $expected = '00000000000000123456';
+        $expected = '0000000000000060000';
 
-        $value = (new FieldN('123456'))
+        $value = (new FieldN('600,00'))
             ->setLength('20')
             ->setPosition(1);
 
