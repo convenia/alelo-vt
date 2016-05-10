@@ -2,7 +2,6 @@
 
 namespace Edbizarro\AleloOrder;
 
-use Edbizarro\Alelo\Fields\Field;
 use Edbizarro\AleloOrder\Interfaces\AleloOrderInterface;
 use Edbizarro\AleloOrder\Registries\BranchRegistry;
 use Edbizarro\AleloOrder\Registries\EmployeeRegistry;
@@ -74,7 +73,7 @@ class AleloOrder implements AleloOrderInterface
             'cnpjDigit' => substr($headerData['cnpj'], 12, 2),
             'firstContactName' => 'Marcelo',
             'name' => $headerData['name'],
-            'registryId' => mt_rand(1, 99999)
+            'registryId' => 2
         ];
 
         $branchData = new BranchRegistry($branchData);
@@ -141,7 +140,7 @@ class AleloOrder implements AleloOrderInterface
             [
                 'employeeRegTotals' => $this->employeesCount(),
                 'orderTotal' => $this->orderTotal(),
-                'registryId' => '123456',
+                'registryId' => count($this->getAllEmployees())+3,
             ]
         );
         return $this->traillerRegistry;

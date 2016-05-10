@@ -58,7 +58,7 @@ class AleloOrderTest extends BaseTest
             'maritalStatus' => '1',
             'motherName' => 'Mother Nature',
             'admissionDate' => '08052016',
-            'username' => 'username',
+            'name' => 'Firstname Lastname',
             'registryId' => '123456',
         ]);
 
@@ -100,6 +100,7 @@ class AleloOrderTest extends BaseTest
                 'motherName' => 'Mother Nature',
                 'admissionDate' => '08052016',
                 'name' => 'Funcionário Teste 01',
+                'registryId' => 3,
             ]
         );
         $aleloOrder->addEmployee(
@@ -117,11 +118,22 @@ class AleloOrderTest extends BaseTest
                 'motherName' => 'Mother Nature',
                 'admissionDate' => '08052016',
                 'name' => 'Funcionário Teste 02',
+                'registryId' => 4,
             ]
         );
 
         $file = $aleloOrder->generate();
 
-        return (string) $file;
+        $expected  = '009052016A001RAZAO SOCIAL LEGAL                 1748468900017000000000000000111280150000000000000021052016QUALQUERCOISA     007                                                                                                                                                                                                                                                                           000001';
+        $expected .= PHP_EOL;
+        $expected .= '1174846890001700000000000RAZAO SOCIAL LEGAL                 0000MARCELO                                                                    000000000000000000                                                                           000000000000000000                                                                           000000000000000000                                                   000002';
+        $expected .= PHP_EOL;
+        $expected .= '500000000330 1                                                                  08011985541452198051418757896    SSP                 SP    000000000000000M1                                             0000000000000                                                            MOTHER NATURE                       0000000000000000000000000000 08052016 FUNCIONARIO TESTE 01                          000003';
+        $expected .= PHP_EOL;
+        $expected .= '500000000330 2                                                                  08011985333843817691911225341    SSP                 SP    000000000000000F1                                             0000000000000                                                            MOTHER NATURE                       0000000000000000000000000000 08052016 FUNCIONARIO TESTE 02                          000004';
+        $expected .= PHP_EOL;
+        $expected .= '9000002000000000000660                                                                                                                                                                                                                                                                                                                                                                                    000005';
+
+       $this->assertEquals($expected, $file);
     }
 }

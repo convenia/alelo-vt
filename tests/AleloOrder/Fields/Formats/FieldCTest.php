@@ -12,7 +12,7 @@ class FieldCTest extends BaseTest
 {
     public function test_format()
     {
-        $expected = 'CUSTOM_VALUE        ';
+        $expected = 'CUSTOM VALUE        ';
 
         $value = (new FieldC('custom value'))
             ->setLength('20')

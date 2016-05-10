@@ -47,7 +47,7 @@ class HeaderRegistryTest extends BaseTest
             ]
         );
 
-        $expected = '005052016A001RAZAO_SOCIAL_COM_CARACTERES_INVALID0531568400013400000000000000001234560000000000000021052016QUALQUERCOISA     007                                                                                                                                                                                                                                                                           000001';
+        $expected = '005052016A001RAZAO SOCIAL COM CARACTERES INVALID0531568400013400000000000000001234560000000000000021052016QUALQUERCOISA     007                                                                                                                                                                                                                                                                           000001';
 
         $this->assertEquals($expected, (string)$header);
     }

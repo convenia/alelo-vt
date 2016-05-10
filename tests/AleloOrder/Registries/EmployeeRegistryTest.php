@@ -26,12 +26,12 @@ class EmployeeRegistryTest extends BaseTest
                 'maritalStatus' => '1',
                 'motherName' => 'Mother Nature',
                 'admissionDate' => '08052016',
-                'username' => 'username',
+                'name' => 'username',
                 'registryId' => '123456',
             ]
         );
 
-        $expected = '500000000010 1                                                                  08011985334022038711373817952    SSP                 SP    00000000000000011                                             0000000000000                                                            MOTHER_NATURE                       0000000000000000000000000000 08052016 USERNAME                                      123456';
+        $expected = '500000000010 1                                                                  08011985334022038711373817952    SSP                 SP    00000000000000011                                             0000000000000                                                            MOTHER NATURE                       0000000000000000000000000000 08052016 USERNAME                                      123456';
 
         $this->assertEquals($expected, (string)$header);
     }

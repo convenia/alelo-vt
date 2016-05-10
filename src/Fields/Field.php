@@ -45,7 +45,7 @@ abstract class Field implements FieldInterface
     public function setValue($value)
     {
         $this->value = S::create($value)
-            ->slugify('_')->toUpperCase();
+            ->slugify(' ')->toUpperCase();
 
         return $this;
     }
