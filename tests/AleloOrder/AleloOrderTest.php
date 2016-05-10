@@ -123,6 +123,6 @@ class AleloOrderTest extends BaseTest
 
         $file = $aleloOrder->generate();
 
-        print_r($file);exit;
+        return (string) $file;
     }
 }
