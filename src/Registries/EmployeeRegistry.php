@@ -183,11 +183,13 @@ class EmployeeRegistry extends Registry
             'length'   => 1,
             'defaultValue' => '',
         ],
-        'username' => [
+        'name' => [
             'format'   => FieldC::class,
             'position' => 349,
             'length'   => 40,
-            'defaultValue' => '',
+            'rules'    => [
+                'required',
+            ]
         ],
         'reserved4' => [
             'format'   => FieldC::class,

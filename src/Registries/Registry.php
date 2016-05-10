@@ -136,6 +136,15 @@ abstract class Registry implements RegistryInterface
     }
 
     /**
+     * @param $fieldName
+     * @return Field
+     */
+    public function getField($fieldName)
+    {
+        return $this->values[$fieldName];
+    }
+
+    /**
      * @return string
      */
     public function __toString()
