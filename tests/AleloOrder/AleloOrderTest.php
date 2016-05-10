@@ -67,7 +67,6 @@ class AleloOrderTest extends BaseTest
         foreach ($aleloOrder->getAllEmployees() as $employee) {
             $this->assertInstanceOf(EmployeeRegistry::class, $employee);
         }
-
     }
 
     public function test_generate()
