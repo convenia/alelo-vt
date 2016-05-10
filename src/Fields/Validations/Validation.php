@@ -105,9 +105,9 @@ class Validation
         $dateFormat = $ruleParams;
         $dateValue = $attributes[$ruleIndex];
 
-        $d = DateTime::createFromFormat($dateFormat, $dateValue);
+        $date = DateTime::createFromFormat($dateFormat, $dateValue);
 
-        return $d && $d->format($dateFormat) === $dateValue;
+        return $date && $date->format($dateFormat) === $dateValue;
     }
 
     /**
