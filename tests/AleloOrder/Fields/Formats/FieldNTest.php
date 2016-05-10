@@ -19,5 +19,7 @@ class FieldNTest extends BaseTest
             ->setPosition(1);
 
         $this->assertEquals($expected, $value->getValue());
+        $this->assertEquals($expected, $value->__toString());
+        $this->assertEquals(1, $value->getPosition());
     }
 }
