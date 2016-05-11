@@ -65,7 +65,7 @@ class Validation
 
                     $valid = $this->{'validate'.$methodName}($data, $ruleIndex, $composeRuleParams);
 
-                    $this->shouldStop($valid, $composeRuleIndex, $ruleIndex, $data);
+                    $this->shouldStop($valid, $composeRuleIndex, $ruleIndex, $data[$ruleIndex]);
                     continue;
                 }
 
@@ -74,7 +74,7 @@ class Validation
                 $this->methodExists($methodName);
 
                 $valid = $this->{'validate'.$methodName}($data, $ruleIndex);
-                $this->shouldStop($valid, $rule, $ruleIndex, $data);
+                $this->shouldStop($valid, $rule, $ruleIndex, $data[$ruleIndex]);
             }
         }
     }
@@ -129,7 +129,7 @@ class Validation
      * @param $rule
      * @param $field
      * @param $data
-     * 
+     *
      * @throws ValidatorException
      */
     protected function shouldStop($state, $rule, $field, $data = null)
@@ -137,7 +137,7 @@ class Validation
         if (is_array($data)) {
             $data = implode(',', $data);
         }
-        
+
         if ($state === false) {
             throw new ValidatorException('Rule "'.$rule. '" fails for field '.$field. '"'.$data.'"');
         }
