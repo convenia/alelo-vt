@@ -139,7 +139,7 @@ class Validation
         }
         
         if ($state === false) {
-            throw new ValidatorException('Rule "'.$rule. '" fails for field '.$field);
+            throw new ValidatorException('Rule "'.$rule. '" fails for field '.$field. '"'.$data.'"');
         }
     }
 
