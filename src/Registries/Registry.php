@@ -76,6 +76,7 @@ abstract class Registry implements RegistryInterface
 
         $this->validator->validate($fields);
 
+        $this->generate();
         $this->validateLength();
     }
 
