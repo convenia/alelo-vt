@@ -20,6 +20,9 @@ class FieldN extends Field
         $this->value = $this->value->truncate($this->getLength());
         $this->value = $this->value->replace(',', '');
         $this->value = $this->value->replace('.', '');
+        $this->value = $this->value->replace('-', '');
+        $this->value = $this->value->replace('/', '');
+        $this->value = $this->value->replace('_', '');
 
         if ($actualLength < $this->getLength()) {
             $this->value = $this->value->padLeft($this->getLength(), 0);
