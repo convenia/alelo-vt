@@ -52,6 +52,12 @@ class AleloOrder implements AleloOrderInterface
      */
     public function __construct(array $headerData)
     {
+        if (isset($headerData['registryId'])) {
+            unset($headerData['registryId']);
+        }
+
+        $headerData['registryId'] = 1;
+
         $this->header = new HeaderRegistry($headerData);
         $this->fileLayout = Stringy::create('');
 

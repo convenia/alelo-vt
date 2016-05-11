@@ -81,7 +81,6 @@ class AleloOrderTest extends BaseTest
                 'orderType' => 1,
                 'accrualMonth' => '052016',
                 'custom' => 'qualquercoisa',
-                'registryId' => 1
             ]
         );
 
