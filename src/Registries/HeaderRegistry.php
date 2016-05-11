@@ -102,9 +102,7 @@ class HeaderRegistry extends Registry
             'format'   => FieldC::class,
             'position' => 107,
             'length'   => 18,
-            'rules'        => [
-                'required'
-            ],
+            'defaultValue' => '',
         ],
         'layoutVersion' => [
             'format'       => FieldN::class,
