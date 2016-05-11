@@ -59,7 +59,6 @@ class AleloOrderTest extends BaseTest
             'motherName' => 'Mother Nature',
             'admissionDate' => '08052016',
             'name' => 'Firstname Lastname',
-            'registryId' => '123456',
         ]);
 
         $this->assertCount(1, $aleloOrder->getAllEmployees());
@@ -81,7 +80,6 @@ class AleloOrderTest extends BaseTest
                 'orderType' => 1,
                 'accrualMonth' => '052016',
                 'custom' => 'qualquercoisa',
-                'registryId' => 1
             ]
         );
 
@@ -100,7 +98,6 @@ class AleloOrderTest extends BaseTest
                 'motherName' => 'Mother Nature',
                 'admissionDate' => '08052016',
                 'name' => 'Funcionário Teste 01',
-                'registryId' => 3,
             ]
         );
         $aleloOrder->addEmployee(
@@ -118,7 +115,6 @@ class AleloOrderTest extends BaseTest
                 'motherName' => 'Mother Nature',
                 'admissionDate' => '08052016',
                 'name' => 'Funcionário Teste 02',
-                'registryId' => 4,
             ]
         );
 
