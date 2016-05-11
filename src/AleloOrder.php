@@ -92,7 +92,7 @@ class AleloOrder implements AleloOrderInterface
      */
     public function addEmployee(array $employeeData)
     {
-        $registryId = count($this->getAllEmployees())+1;
+        $registryId = 2+count($this->getAllEmployees())+1;
         $employeeData = array_merge(['registryId' => $registryId], $employeeData);
 
         $this->employees[] = new EmployeeRegistry($employeeData);
