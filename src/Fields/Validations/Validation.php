@@ -7,7 +7,7 @@ use Edbizarro\AleloOrder\Exceptions\ValidatorInvalidRuleException;
 use Stringy\Stringy;
 use DateTime;
 
-/**
+/**shouldStop
  * Class Validation.
  */
 class Validation
@@ -59,13 +59,13 @@ class Validation
                     list($composeRuleIndex, $composeRuleParams) = explode(':', $rule);
 
                     $methodName = Stringy::create($composeRuleIndex);
-                    $methodName = (string)$methodName->toTitleCase();
+                    $methodName = (string) $methodName->toTitleCase();
 
                     $this->methodExists($methodName);
 
                     $valid = $this->{'validate'.$methodName}($data, $ruleIndex, $composeRuleParams);
 
-                    $this->shouldStop($valid, $composeRuleIndex, $ruleIndex);
+                    $this->shouldStop($valid, $composeRuleIndex, $ruleIndex, $data);
                     continue;
                 }
 
@@ -74,7 +74,7 @@ class Validation
                 $this->methodExists($methodName);
 
                 $valid = $this->{'validate'.$methodName}($data, $ruleIndex);
-                $this->shouldStop($valid, $rule, $ruleIndex);
+                $this->shouldStop($valid, $rule, $ruleIndex, $data);
             }
         }
     }
@@ -127,10 +127,17 @@ class Validation
     /**
      * @param $state
      * @param $rule
+     * @param $field
+     * @param $data
+     * 
      * @throws ValidatorException
      */
-    protected function shouldStop($state, $rule, $field)
+    protected function shouldStop($state, $rule, $field, $data = null)
     {
+        if (is_array($data)) {
+            $data = implode(',', $data);
+        }
+        
         if ($state === false) {
             throw new ValidatorException('Rule "'.$rule. '" fails for field '.$field);
         }
