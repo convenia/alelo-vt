@@ -134,6 +134,6 @@ class AleloOrderTest extends BaseTest
         $expected .= PHP_EOL;
         $expected .= '9000002000000000000660                                                                                                                                                                                                                                                                                                                                                                                    000005';
 
-       $this->assertEquals($expected, $file);
+        $this->assertEquals($expected, $file);
     }
 }
