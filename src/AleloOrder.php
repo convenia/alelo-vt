@@ -77,7 +77,7 @@ class AleloOrder implements AleloOrderInterface
             'cnpjBase' => substr($headerData['cnpj'], 0, 8),
             'cnpjBranch' => substr($headerData['cnpj'], 8, 4),
             'cnpjDigit' => substr($headerData['cnpj'], 12, 2),
-            'firstContactName' => 'Marcelo',
+            'firstContactName' => $headerData['name'],
             'name' => $headerData['name'],
             'registryId' => 2
         ];
