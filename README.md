@@ -18,6 +18,7 @@
 - [ ] Melhorar feedback da validação
 - [ ] Criação de tipo de validação "requiredIf" que será usada em CPF/CNPJ
 - [ ] Existe validação entre registros, atualmente a validação é somente no escopo do registro, pensar em como deixar o escopo da validação global
+- [ ] Refatorar firstContactName do branchRegistry (atualmente igual ao name do header)
 
 #### Códigos
 
