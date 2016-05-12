@@ -74,7 +74,11 @@ abstract class Registry implements RegistryInterface
             $this->values[$field]->setValue($value);
         }
 
-        $this->validator->validate($fields);
+        try {
+            $this->validator->validate($fields);
+        } catch (\Edbizarro\AleloOrder\Exceptions\RegistryTooShortException $e) {
+            new RegistryTooShortException($e->getMessage(). 'in registry '.get_class());
+        }
 
         $this->generate();
         $this->validateLength();
