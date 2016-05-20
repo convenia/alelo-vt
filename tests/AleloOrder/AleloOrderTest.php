@@ -74,7 +74,7 @@ class AleloOrderTest extends BaseTest
             [
                 'orderDate' => '09052016',
                 'name' => 'Razão Social Legal',
-                'cnpj' => '17484689000170',
+                'cnpj' => '17.484.689/0001-70',
                 'contractNumber' => '00011128015',
                 'benefitType' => '2', // 1 = AVV 2= RVV 3= CVV 4= NVV 5= FVV
                 'orderType' => 1,
@@ -88,7 +88,7 @@ class AleloOrderTest extends BaseTest
                 'monthValue' => '330',
                 'employeeRegistry' => '1',
                 'birthDate' => '08011985',
-                'cpf' => '54145219805',
+                'cpf' => '541.452.198-05',
                 'identityType' => '1',
                 'identityNumber' => '418757896',
                 'identityIssuer' => 'SSP',
@@ -105,7 +105,7 @@ class AleloOrderTest extends BaseTest
                 'monthValue' => '330',
                 'employeeRegistry' => '2',
                 'birthDate' => '08011985',
-                'cpf' => '33384381769',
+                'cpf' => '333.843.817-69',
                 'identityType' => '1',
                 'identityNumber' => '911225341',
                 'identityIssuer' => 'SSP',

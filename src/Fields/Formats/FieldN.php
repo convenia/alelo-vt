@@ -16,13 +16,16 @@ class FieldN extends Field
      */
     public function format()
     {
+        $this->value = $this->value->trim();
         $actualLength = $this->value->length();
-        $this->value = $this->value->truncate($this->getLength());
+
         $this->value = $this->value->replace(',', '');
         $this->value = $this->value->replace('.', '');
         $this->value = $this->value->replace('-', '');
         $this->value = $this->value->replace('/', '');
         $this->value = $this->value->replace('_', '');
+
+        $this->value = $this->value->truncate($this->getLength());
 
         if ($actualLength < $this->getLength()) {
             $this->value = $this->value->padLeft($this->getLength(), 0);

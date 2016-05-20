@@ -74,9 +74,9 @@ class AleloOrder implements AleloOrderInterface
         $branchData = [
             'aleloCompanyCod' => 00,
             'branchCod' => '',
-            'cnpjBase' => substr($headerData['cnpj'], 0, 8),
-            'cnpjBranch' => substr($headerData['cnpj'], 8, 4),
-            'cnpjDigit' => substr($headerData['cnpj'], 12, 2),
+            'cnpjBase' => substr($this->header->getField('cnpj'), 0, 8),
+            'cnpjBranch' => substr($this->header->getField('cnpj'), 8, 4),
+            'cnpjDigit' => substr($this->header->getField('cnpj'), 12, 2),
             'firstContactName' => $headerData['name'],
             'name' => $headerData['name'],
             'registryId' => 2
@@ -122,17 +122,17 @@ class AleloOrder implements AleloOrderInterface
     public function generate()
     {
         $this->generateTraillerRegistry();
-        $this->fileLayout = $this->fileLayout->append((string) $this->header);
+        $this->fileLayout = $this->fileLayout->append($this->header->__toString());
         $this->fileLayout = $this->fileLayout->append(PHP_EOL);
-        $this->fileLayout = $this->fileLayout->append((string) $this->branch);
+        $this->fileLayout = $this->fileLayout->append($this->branch->__toString());
         $this->fileLayout = $this->fileLayout->append(PHP_EOL);
 
         foreach ($this->getAllEmployees() as $employeeRegistry) {
-            $this->fileLayout = $this->fileLayout->append((string) $employeeRegistry);
+            $this->fileLayout = $this->fileLayout->append($employeeRegistry->__toString());
             $this->fileLayout = $this->fileLayout->append(PHP_EOL);
         }
 
-        $this->fileLayout = $this->fileLayout->append((string) $this->traillerRegistry);
+        $this->fileLayout = $this->fileLayout->append($this->traillerRegistry->__toString());
 
         return (string) $this->fileLayout;
     }
