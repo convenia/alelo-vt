@@ -47,6 +47,14 @@ class AleloOrder implements AleloOrderInterface
     protected $autoBranchFill = true;
 
     /**
+     * @var array
+     */
+    protected $validProductTypes = [
+        'AVV' => '1',
+        'RVV' => '2',
+    ];
+
+    /**
      * AleloOrder constructor.
      * @param array $headerData
      */
