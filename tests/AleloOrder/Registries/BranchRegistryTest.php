@@ -1,9 +1,9 @@
 <?php
 
-namespace Edbizarro\AleloOrder\Tests\Registries;
+namespace Convenia\AleloOrder\Tests\Registries;
 
-use Edbizarro\AleloOrder\Registries\BranchRegistry;
-use Edbizarro\AleloOrder\Tests\BaseTest;
+use Convenia\AleloOrder\Registries\BranchRegistry;
+use Convenia\AleloOrder\Tests\BaseTest;
 
 /**
  * Class BranchRegistryTest.

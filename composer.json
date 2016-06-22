@@ -1,6 +1,6 @@
 {
-    "name": "edbizarro/alelo-order",
-    "description": "Este package tem como objetivo viabilizar pedidos dos Produtos ALELO em arquivos “TEXTO” que podem ser gerados a partir da Folha de Pagamento de sua Empresa.",
+    "name": "convenia/alelo-order",
+    "description": "Este package viabiliza a criação de pedidos dos Produtos ALELO em arquivos “TEXTO” que podem ser gerados a partir da Folha de Pagamento de sua Empresa.",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": ">=5.5",
+        "php": ">=5.4",
         "danielstjules/stringy": "^2.3"
     },
     "require-dev": {
@@ -29,12 +29,12 @@
             "src/"
         ],
         "psr-4": {
-            "Edbizarro\\AleloOrder\\": "src/"
+            "Convenia\\AleloOrder\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Edbizarro\\AleloOrder\\Tests\\": "tests/"
+            "Convenia\\AleloOrder\\Tests\\": "tests/"
         }
     },
     "config":{

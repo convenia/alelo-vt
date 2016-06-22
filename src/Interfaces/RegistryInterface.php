@@ -1,6 +1,6 @@
 <?php
 
-namespace Edbizarro\AleloOrder\Interfaces;
+namespace Convenia\AleloOrder\Interfaces;
 
 /**
  * Interface RegistryInterface.

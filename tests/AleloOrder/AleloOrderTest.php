@@ -1,9 +1,9 @@
 <?php
 
-namespace Edbizarro\AleloOrder\Tests;
+namespace Convenia\AleloOrder\Tests;
 
-use Edbizarro\AleloOrder\AleloOrder;
-use Edbizarro\AleloOrder\Registries\EmployeeRegistry;
+use Convenia\AleloOrder\AleloOrder;
+use Convenia\AleloOrder\Registries\EmployeeRegistry;
 
 /**
  * Class AleloOrderTest.

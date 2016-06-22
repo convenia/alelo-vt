@@ -1,9 +1,9 @@
 <?php
 
-namespace Edbizarro\AleloOrder\Tests\Fields\Formats;
+namespace Convenia\AleloOrder\Tests\Fields\Formats;
 
 use Edbizarro\Alelo\Fields\Formats\FieldC;
-use Edbizarro\AleloOrder\Tests\BaseTest;
+use Convenia\AleloOrder\Tests\BaseTest;
 
 /**
  * Class FieldCTest.

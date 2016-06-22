@@ -1,9 +1,9 @@
 <?php
 
-namespace Edbizarro\AleloOrder\Fields\Validations;
+namespace Convenia\AleloOrder\Fields\Validations;
 
-use Edbizarro\AleloOrder\Exceptions\ValidatorException;
-use Edbizarro\AleloOrder\Exceptions\ValidatorInvalidRuleException;
+use Convenia\AleloOrder\Exceptions\ValidatorException;
+use Convenia\AleloOrder\Exceptions\ValidatorInvalidRuleException;
 use Stringy\Stringy;
 use DateTime;
 
@@ -115,7 +115,7 @@ class Validation
      *
      * @param $methodName
      * @return bool
-     * @throws \Edbizarro\AleloOrder\Exceptions\ValidatorInvalidRuleException
+     * @throws \Convenia\AleloOrder\Exceptions\ValidatorInvalidRuleException
      */
     protected function methodExists($methodName)
     {

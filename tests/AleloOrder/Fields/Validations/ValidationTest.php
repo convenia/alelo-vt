@@ -1,9 +1,9 @@
 <?php
 
-namespace Edbizarro\AleloOrder\Tests\Fields\Validations;
+namespace Convenia\AleloOrder\Tests\Fields\Validations;
 
-use Edbizarro\AleloOrder\Fields\Validations\Validation;
-use Edbizarro\AleloOrder\Tests\BaseTest;
+use Convenia\AleloOrder\Fields\Validations\Validation;
+use Convenia\AleloOrder\Tests\BaseTest;
 
 /**
  * Class ValidationTest.
@@ -11,7 +11,7 @@ use Edbizarro\AleloOrder\Tests\BaseTest;
 class ValidationTest extends BaseTest
 {
     /**
-     * @expectedException \Edbizarro\AleloOrder\Exceptions\ValidatorInvalidRuleException
+     * @expectedException \Convenia\AleloOrder\Exceptions\ValidatorInvalidRuleException
      */
     public function test_invalid_rule()
     {
@@ -29,7 +29,7 @@ class ValidationTest extends BaseTest
     }
 
     /**
-     * @expectedException \Edbizarro\AleloOrder\Exceptions\ValidatorException
+     * @expectedException \Convenia\AleloOrder\Exceptions\ValidatorException
      */
     public function test_rule_fails()
     {

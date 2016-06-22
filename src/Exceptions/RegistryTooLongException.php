@@ -1,6 +1,6 @@
 <?php
 
-namespace Edbizarro\AleloOrder\Exceptions;
+namespace Convenia\AleloOrder\Exceptions;
 
 class RegistryTooLongException extends \Exception
 {

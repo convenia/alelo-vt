@@ -1,12 +1,12 @@
 <?php
 
-namespace Edbizarro\AleloOrder;
+namespace Convenia\AleloOrder;
 
-use Edbizarro\AleloOrder\Interfaces\AleloOrderInterface;
-use Edbizarro\AleloOrder\Registries\BranchRegistry;
-use Edbizarro\AleloOrder\Registries\EmployeeRegistry;
-use Edbizarro\AleloOrder\Registries\HeaderRegistry;
-use Edbizarro\AleloOrder\Registries\TraillerRegistry;
+use Convenia\AleloOrder\Interfaces\AleloOrderInterface;
+use Convenia\AleloOrder\Registries\BranchRegistry;
+use Convenia\AleloOrder\Registries\EmployeeRegistry;
+use Convenia\AleloOrder\Registries\HeaderRegistry;
+use Convenia\AleloOrder\Registries\TraillerRegistry;
 use Stringy\Stringy;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Edbizarro\AleloOrder\Registries;
+namespace Convenia\AleloOrder\Registries;
 
 use Edbizarro\Alelo\Fields\Formats\FieldN;
 use Edbizarro\Alelo\Fields\Formats\FieldC;

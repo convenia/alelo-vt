@@ -1,9 +1,9 @@
 <?php
 
-namespace Edbizarro\AleloOrder\Tests\Registries;
+namespace Convenia\AleloOrder\Tests\Registries;
 
-use Edbizarro\AleloOrder\Tests\BaseTest;
-use Edbizarro\AleloOrder\Registries\HeaderRegistry;
+use Convenia\AleloOrder\Tests\BaseTest;
+use Convenia\AleloOrder\Registries\HeaderRegistry;
 
 /**
  * Class HeaderRegistryTest.
@@ -11,7 +11,7 @@ use Edbizarro\AleloOrder\Registries\HeaderRegistry;
 class HeaderRegistryTest extends BaseTest
 {
     /**
-     * @expectedException \Edbizarro\AleloOrder\Exceptions\FieldNotExistsException
+     * @expectedException \Convenia\AleloOrder\Exceptions\FieldNotExistsException
      */
     public function test_field_not_exists()
     {

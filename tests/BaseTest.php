@@ -1,6 +1,6 @@
 <?php
 
-namespace Edbizarro\AleloOrder\Tests;
+namespace Convenia\AleloOrder\Tests;
 
 use PHPUnit_Framework_TestCase;
 

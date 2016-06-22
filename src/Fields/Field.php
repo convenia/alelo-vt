@@ -2,7 +2,7 @@
 
 namespace Edbizarro\Alelo\Fields;
 
-use Edbizarro\AleloOrder\Interfaces\FieldInterface;
+use Convenia\AleloOrder\Interfaces\FieldInterface;
 use Stringy\Stringy as S;
 
 /**

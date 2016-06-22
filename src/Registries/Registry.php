@@ -1,13 +1,13 @@
 <?php
 
-namespace Edbizarro\AleloOrder\Registries;
+namespace Convenia\AleloOrder\Registries;
 
 use Edbizarro\Alelo\Fields\Field;
-use Edbizarro\AleloOrder\Exceptions\FieldNotExistsException;
-use Edbizarro\AleloOrder\Exceptions\RegistryTooLongException;
-use Edbizarro\AleloOrder\Exceptions\RegistryTooShortException;
-use Edbizarro\AleloOrder\Fields\Validations\Validation;
-use Edbizarro\AleloOrder\Interfaces\RegistryInterface;
+use Convenia\AleloOrder\Exceptions\FieldNotExistsException;
+use Convenia\AleloOrder\Exceptions\RegistryTooLongException;
+use Convenia\AleloOrder\Exceptions\RegistryTooShortException;
+use Convenia\AleloOrder\Fields\Validations\Validation;
+use Convenia\AleloOrder\Interfaces\RegistryInterface;
 use Stringy\Stringy;
 
 /**
@@ -76,7 +76,7 @@ abstract class Registry implements RegistryInterface
 
         try {
             $this->validator->validate($fields);
-        } catch (\Edbizarro\AleloOrder\Exceptions\RegistryTooShortException $e) {
+        } catch (\Convenia\AleloOrder\Exceptions\RegistryTooShortException $e) {
             new RegistryTooShortException($e->getMessage(). 'in registry '.get_class());
         }
 
