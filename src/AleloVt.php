@@ -14,7 +14,7 @@ use Stringy\Stringy;
 /**
  * Class AleloVt.
  */
-class AleloOrder implements AleloVtInterface
+class AleloVt implements AleloVtInterface
 {
     /**
      * @var Stringy

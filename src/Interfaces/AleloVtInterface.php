@@ -5,7 +5,7 @@ namespace Convenia\AleloVt\Interfaces;
 /**
  * Interface AleloVtInterface.
  */
-interface AleloOrderInterface
+interface AleloVtInterface
 {
     /**
      * Generate the alelo orders file.
