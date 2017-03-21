@@ -12,13 +12,14 @@
     ],
     "authors": [
         {
-            "name": "Eduardo Bizarro",
-            "email": "edbizarro@gmail.com"
-        },
-        {
             "name": "Victor Ventura",
             "email": "euventura@gmail.com"
+        },
+        {
+            "name": "Eduardo Bizarro",
+            "email": "edbizarro@gmail.com"
         }
+
     ],
     "require": {
         "php": ">=5.4",
