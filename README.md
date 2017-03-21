@@ -87,4 +87,4 @@ $AleloVt = new AleloVt(
 
 ## License
 
-[MIT](LICENSE) © Richard Littauer
+[MIT](LICENSE)
