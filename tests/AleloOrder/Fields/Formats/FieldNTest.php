@@ -1,9 +1,9 @@
 <?php
 
-namespace Convenia\AleloOrder\Tests\Fields\Formats;
+namespace Convenia\AleloVt\Tests\Fields\Formats;
 
-use Convenia\AleloOrder\Fields\Formats\FieldN;
-use Convenia\AleloOrder\Tests\BaseTest;
+use Convenia\AleloVt\Fields\Formats\FieldN;
+use Convenia\AleloVt\Tests\BaseTest;
 
 /**
  * Class FieldNTest.

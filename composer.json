@@ -1,18 +1,23 @@
 {
-    "name": "convenia/alelo-order",
-    "description": "Este package viabiliza a criação de pedidos dos Produtos ALELO em arquivos “TEXTO” que podem ser gerados a partir da Folha de Pagamento de sua Empresa.",
+    "name": "convenia/alelo-vt",
+    "description": "Este package viabiliza a criação de pedidos dos integração de Vale Transporte ALELO em arquivos “TEXTO” que podem ser gerados a partir da Folha de Pagamento de sua Empresa.",
     "type": "library",
     "license": "MIT",
     "keywords": [
         "php",
         "alelo",
-        "refeição",
-        "alimentação"
+        "VT",
+        "Vale Transporte",
+        "Integração"
     ],
     "authors": [
         {
             "name": "Eduardo Bizarro",
             "email": "edbizarro@gmail.com"
+        },
+        {
+            "name": "Victor Ventura",
+            "email": "euventura@gmail.com"
         }
     ],
     "require": {
@@ -29,12 +34,12 @@
             "src/"
         ],
         "psr-4": {
-            "Convenia\\AleloOrder\\": "src/"
+            "Convenia\\AleloVt\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Convenia\\AleloOrder\\Tests\\": "tests/"
+            "Convenia\\AleloVt\\Tests\\": "tests/"
         }
     },
     "config":{

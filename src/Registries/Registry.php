@@ -1,13 +1,13 @@
 <?php
 
-namespace Convenia\AleloOrder\Registries;
+namespace Convenia\AleloVt\Registries;
 
-use Convenia\AleloOrder\Fields\Field;
-use Convenia\AleloOrder\Exceptions\FieldNotExistsException;
-use Convenia\AleloOrder\Exceptions\RegistryTooLongException;
-use Convenia\AleloOrder\Exceptions\RegistryTooShortException;
-use Convenia\AleloOrder\Fields\Validations\Validation;
-use Convenia\AleloOrder\Interfaces\RegistryInterface;
+use Convenia\AleloVt\Fields\Field;
+use Convenia\AleloVt\Exceptions\FieldNotExistsException;
+use Convenia\AleloVt\Exceptions\RegistryTooLongException;
+use Convenia\AleloVt\Exceptions\RegistryTooShortException;
+use Convenia\AleloVt\Fields\Validations\Validation;
+use Convenia\AleloVt\Interfaces\RegistryInterface;
 use Stringy\Stringy;
 
 /**
@@ -20,7 +20,7 @@ abstract class Registry implements RegistryInterface
      *
      * @var int
      */
-    protected $length = 400;
+    protected $length = 240;
 
     /**
      * Final string.
@@ -53,12 +53,6 @@ abstract class Registry implements RegistryInterface
      */
     protected $validator;
 
-    /**
-     * Registry constructor.
-     *
-     * @param array $fields
-     *
-     */
     public function __construct(array $fields = [])
     {
         $this->validator = new Validation();
@@ -76,8 +70,8 @@ abstract class Registry implements RegistryInterface
 
         try {
             $this->validator->validate($fields);
-        } catch (\Convenia\AleloOrder\Exceptions\RegistryTooShortException $e) {
-            new RegistryTooShortException($e->getMessage(). 'in registry '.get_class());
+        } catch (RegistryTooShortException $e) {
+            new RegistryTooShortException($e->getMessage().'in registry '.get_class());
         }
 
         $this->generate();
@@ -85,7 +79,7 @@ abstract class Registry implements RegistryInterface
     }
 
     /**
-     * Fill the $values array with default and required values
+     * Fill the $values array with default and required values.
      */
     protected function fill()
     {
@@ -94,14 +88,17 @@ abstract class Registry implements RegistryInterface
                 $this->defaultFields[$field]['defaultValue'] :
                 null;
 
-            $this->values[$field] = (new $this->defaultFields[$field]['format']($defaultValue))
+            $className = $this->defaultFields[$field]['format'];
+            $tempObj = (new $className($defaultValue));
+
+            $this->values[$field] = $tempObj
                 ->setPosition($this->defaultFields[$field]['position'])
                 ->setLength($this->defaultFields[$field]['length']);
         }
     }
 
     /**
-     * Generate the full registry string
+     * Generate the full registry string.
      *
      * @return string
      */
@@ -109,7 +106,7 @@ abstract class Registry implements RegistryInterface
     {
         $this->resultString = Stringy::create('');
 
-        /**
+        /*
          * @var Field
          */
         foreach ($this->values as $valueName => $valueClass) {
@@ -120,8 +117,10 @@ abstract class Registry implements RegistryInterface
     }
 
     /**
-     * Validate if the generated result string matches the length
+     * Validate if the generated result string matches the length.
+     *
      * @return bool
+     *
      * @throws RegistryTooLongException
      * @throws RegistryTooShortException
      */
@@ -142,6 +141,7 @@ abstract class Registry implements RegistryInterface
 
     /**
      * @param $fieldName
+     *
      * @return Field
      */
     public function getField($fieldName)

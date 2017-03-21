@@ -1,135 +1,186 @@
 <?php
 
-namespace Convenia\AleloOrder\Tests;
+namespace Convenia\AleloVt\Tests;
 
-use Convenia\AleloOrder\AleloOrder;
-use Convenia\AleloOrder\Registries\EmployeeRegistry;
+use Convenia\AleloVt\AleloVt;
 
 /**
- * Class AleloOrderTest.
+ * Class AleloVtTest.
  */
 class AleloOrderTest extends BaseTest
 {
     public function test_instantiate()
     {
-        $aleloOrder = new AleloOrder(
+        $AleloVt = new AleloVt(
             [
                 'orderDate' => '05052016',
                 'name' => 'Razão Social Com Caracteres Inválidos',
                 'cnpj' => '05315684000134',
-                'contractNumber' => 123456,
-                'benefitType' => '2', // 1 = AVV 2= RVV 3= CVV 4= NVV 5= FVV
-                'orderType' => 1,
-                'accrualMonth' => '052016',
-                'custom' => 'qualquercoisa',
-                'registryId' => 1
+
             ]
         );
 
-        $this->assertInstanceOf(AleloOrder::class, $aleloOrder);
+        $this->assertInstanceOf(AleloVt::class, $AleloVt);
     }
 
-    public function test_add_employee()
+    public function test_add_address()
     {
-        $aleloOrder = new AleloOrder(
+        $AleloVt = new AleloVt(
             [
                 'orderDate' => '05052016',
                 'name' => 'Razão Social Com Caracteres Inválidos',
                 'cnpj' => '05315684000134',
-                'contractNumber' => 123456,
-                'benefitType' => '2', // 1 = AVV 2= RVV 3= CVV 4= NVV 5= FVV
-                'orderType' => 1,
-                'accrualMonth' => '052016',
-                'custom' => 'qualquercoisa',
-                'registryId' => 1
             ]
         );
 
-        $aleloOrder->addEmployee([
-            'monthValue' => '10',
-            'employeeRegistry' => '1',
-            'birthDate' => '08011985',
-            'cpf' => '54145219805',
-            'identityType' => '1',
-            'identityNumber' => '373817952',
-            'identityIssuer' => 'SSP',
-            'identityIssuerState' => 'SP',
-            'gender' => '1',
-            'maritalStatus' => '1',
-            'motherName' => 'Mother Nature',
-            'admissionDate' => '08052016',
-            'name' => 'Firstname Lastname',
+        $registryAdd = $AleloVt->addAddress([
+            'cnpj' => '05315684000134a',
+            'id' => '154',
+            'street' => 'Alameda Pamplona',
+            'number' => '1427',
+            'district' => 'jardim paulista',
+            'cep' => '04527001',
+            'state' => 'SP',
+            'person' => 'José ninguém',
         ]);
 
-        $this->assertCount(1, $aleloOrder->getAllEmployees());
+        $this->assertTrue($registryAdd);
+    }
 
-        foreach ($aleloOrder->getAllEmployees() as $employee) {
-            $this->assertInstanceOf(EmployeeRegistry::class, $employee);
-        }
+    public function test_add_user()
+    {
+        $AleloVt = new AleloVt(
+            [
+                'orderDate' => '05052016',
+                'name' => 'Razão Social Com Caracteres Inválidos',
+                'cnpj' => '05315684000134',
+            ]
+        );
+
+        $registryAdd = $AleloVt->addUser([
+            'cnpj' => '05315684000134a',
+            'addressId' => '154',
+            'code' => '229247',
+            'name' => 'José Alguem',
+            'cpf' => '22924742804',
+            'rg' => '42421196',
+            'rgDigit' => '5',
+            'rgState' => 'SSP',
+            'birthDate' => '14071987',
+            'workedDays' => 22,
+        ]);
+        $this->assertTrue($registryAdd);
+    }
+
+    public function test_add_benefit()
+    {
+        $AleloVt = new AleloVt(
+            [
+                'orderDate' => '05052016',
+                'name' => 'Razão Social Com Caracteres Inválidos',
+                'cnpj' => '05315684000134',
+            ]
+        );
+
+        $registryAdd = $AleloVt->addBenefit([
+            'cnpj' => '05315684000134a',
+            'userCode' => '229247',
+            'id' => '1',
+            'name' => 'nome d o benefício',
+            'quantity' => '2',
+        ]);
+        $this->assertTrue($registryAdd);
+    }
+
+    public function test_add_residence()
+    {
+        $AleloVt = new AleloVt(
+            [
+                'orderDate' => '05052016',
+                'name' => 'Razão Social Com Caracteres Inválidos',
+                'cnpj' => '05315684000134',
+            ]
+        );
+
+        $registryAdd = $AleloVt->addResidence([
+            'cnpj' => '05315684000134a',
+            'userCode' => '229247',
+            'street' => 'Alameda Pamplona',
+            'number' => '1427',
+            'district' => 'jardim paulista',
+            'cep' => '04527001',
+            'state' => 'SP',
+
+        ]);
+        $this->assertTrue($registryAdd);
     }
 
     public function test_generate()
     {
-        $aleloOrder = new AleloOrder(
+        $AleloVt = new AleloVt(
             [
-                'orderDate' => '09052016',
-                'name' => 'Razão Social Legal',
-                'cnpj' => '17.484.689/0001-70',
-                'contractNumber' => '00011128015',
-                'benefitType' => '2', // 1 = AVV 2= RVV 3= CVV 4= NVV 5= FVV
-                'orderType' => 1,
-                'accrualMonth' => '052016',
-                'custom' => 'qualquercoisa',
+                'orderDate' => '05052016',
+                'name' => 'Razão Social Com Caracteres Inválidos',
+                'cnpj' => '05315684000134',
             ]
         );
 
-        $aleloOrder->addEmployee(
-            [
-                'monthValue' => '330',
-                'employeeRegistry' => '1',
-                'birthDate' => '08011985',
-                'cpf' => '541.452.198-05',
-                'identityType' => '1',
-                'identityNumber' => '418757896',
-                'identityIssuer' => 'SSP',
-                'identityIssuerState' => 'SP',
-                'gender' => 'm',
-                'maritalStatus' => '1',
-                'motherName' => 'Mother Nature',
-                'admissionDate' => '08052016',
-                'name' => 'Funcionário Teste 01',
-            ]
-        );
-        $aleloOrder->addEmployee(
-            [
-                'monthValue' => '330',
-                'employeeRegistry' => '2',
-                'birthDate' => '08011985',
-                'cpf' => '333.843.817-69',
-                'identityType' => '1',
-                'identityNumber' => '911225341',
-                'identityIssuer' => 'SSP',
-                'identityIssuerState' => 'SP',
-                'gender' => 'f',
-                'maritalStatus' => '1',
-                'motherName' => 'Mother Nature',
-                'admissionDate' => '08052016',
-                'name' => 'Funcionário Teste 02',
-            ]
-        );
+        $AleloVt->addAddress([
+            'cnpj' => '05315684000134a',
+            'id' => '154',
+            'street' => 'Alameda Pamplona',
+            'number' => '1427',
+            'district' => 'jardim paulista',
+            'cep' => '04527001',
+            'state' => 'SP',
+            'person' => 'José ninguém',
+        ]);
 
-        $file = $aleloOrder->generate();
+        $AleloVt->addUser([
+            'cnpj' => '05315684000134a',
+            'addressId' => '154',
+            'code' => '229247',
+            'name' => 'José Alguem',
+            'cpf' => '22924742804',
+            'rg' => '42421196',
+            'rgDigit' => '5',
+            'rgState' => 'SSP',
+            'birthDate' => '14071987',
+            'workedDays' => 22,
+        ]);
 
-        $expected  = '009052016A001RAZAO SOCIAL LEGAL                 1748468900017000000000000000111280150000000000000021052016QUALQUERCOISA     007                                                                                                                                                                                                                                                                           000001';
-        $expected .= PHP_EOL;
-        $expected .= '1174846890001700000000000RAZAO SOCIAL LEGAL                 0000RAZAO SOCIAL LEGAL                                                         000000000000000000                                                                           000000000000000000                                                                           000000000000000000                                                   000002';
-        $expected .= PHP_EOL;
-        $expected .= '500000000330 1                                                                  08011985541452198051418757896    SSP                 SP    000000000000000M1                                             0000000000000                                                            MOTHER NATURE                       0000000000000000000000000000 08052016 FUNCIONARIO TESTE 01                          000003';
-        $expected .= PHP_EOL;
-        $expected .= '500000000330 2                                                                  08011985333843817691911225341    SSP                 SP    000000000000000F1                                             0000000000000                                                            MOTHER NATURE                       0000000000000000000000000000 08052016 FUNCIONARIO TESTE 02                          000004';
-        $expected .= PHP_EOL;
-        $expected .= '9000002000000000000660                                                                                                                                                                                                                                                                                                                                                                                    000005';
+        $AleloVt->addBenefit([
+            'cnpj' => '05315684000134a',
+            'userCode' => '229247',
+            'id' => '1',
+            'name' => 'nome d o benefício',
+            'quantity' => '2',
+        ]);
 
-        $this->assertEquals($expected, $file);
+        $AleloVt->addResidence([
+            'cnpj' => '05315684000134a',
+            'userCode' => '229247',
+            'street' => 'Alameda Pamplona',
+            'number' => '1427',
+            'district' => 'jardim paulista',
+            'cep' => '04527001',
+            'state' => 'SP',
+
+        ]);
+
+        $file = $AleloVt->generate();
+        $this->assertNotNull($file);
+
+//        $expected  = '009052016A001RAZAO SOCIAL LEGAL                 1748468900017000000000000000111280150000000000000021052016QUALQUERCOISA     007                                                                                                                                                                                                                                                                           000001';
+//        $expected .= PHP_EOL;
+//        $expected .= '1174846890001700000000000RAZAO SOCIAL LEGAL                 0000RAZAO SOCIAL LEGAL                                                         000000000000000000                                                                           000000000000000000                                                                           000000000000000000                                                   000002';
+//        $expected .= PHP_EOL;
+//        $expected .= '500000000330 1                                                                  08011985541452198051418757896    SSP                 SP    000000000000000M1                                             0000000000000                                                            MOTHER NATURE                       0000000000000000000000000000 08052016 FUNCIONARIO TESTE 01                          000003';
+//        $expected .= PHP_EOL;
+//        $expected .= '500000000330 2                                                                  08011985333843817691911225341    SSP                 SP    000000000000000F1                                             0000000000000                                                            MOTHER NATURE                       0000000000000000000000000000 08052016 FUNCIONARIO TESTE 02                          000004';
+//        $expected .= PHP_EOL;
+//        $expected .= '9000002000000000000660                                                                                                                                                                                                                                                                                                                                                                                    000005';
+
+        //$this->assertEquals($expected, $file);
     }
 }

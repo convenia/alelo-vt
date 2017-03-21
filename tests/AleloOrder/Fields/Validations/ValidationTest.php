@@ -1,9 +1,9 @@
 <?php
 
-namespace Convenia\AleloOrder\Tests\Fields\Validations;
+namespace Convenia\AleloVt\Tests\Fields\Validations;
 
-use Convenia\AleloOrder\Fields\Validations\Validation;
-use Convenia\AleloOrder\Tests\BaseTest;
+use Convenia\AleloVt\Fields\Validations\Validation;
+use Convenia\AleloVt\Tests\BaseTest;
 
 /**
  * Class ValidationTest.
@@ -11,17 +11,17 @@ use Convenia\AleloOrder\Tests\BaseTest;
 class ValidationTest extends BaseTest
 {
     /**
-     * @expectedException \Convenia\AleloOrder\Exceptions\ValidatorInvalidRuleException
+     * @expectedException \Convenia\AleloVt\Exceptions\ValidatorInvalidRuleException
      */
     public function test_invalid_rule()
     {
         $validator = new Validation();
         $rules = [
             'field1' => [
-                'rules'    => [
+                'rules' => [
                     'invalid_rule',
-                ]
-            ]
+                ],
+            ],
         ];
 
         $validator->make($rules);
@@ -29,23 +29,22 @@ class ValidationTest extends BaseTest
     }
 
     /**
-     * @expectedException \Convenia\AleloOrder\Exceptions\ValidatorException
+     * @expectedException \Convenia\AleloVt\Exceptions\ValidatorException
      */
     public function test_rule_fails()
     {
         $validator = new Validation();
         $rules = [
             'field1' => [
-                'rules'    => [
+                'rules' => [
                     'required',
-                ]
-            ]
+                ],
+            ],
         ];
 
         $validator->make($rules);
         $validator->validate(['field2' => '05052016', 'test' => 'value2']);
     }
-
 
     public function test_validate_required()
     {
@@ -53,13 +52,13 @@ class ValidationTest extends BaseTest
 
         $rules = [
             'field1' => [
-                'format'   => FieldN::class,
+                'format' => FieldN::class,
                 'position' => 2,
-                'length'   => 8,
-                'rules'    => [
+                'length' => 8,
+                'rules' => [
                     'required',
-                ]
-            ]
+                ],
+            ],
         ];
 
         $validator->make($rules);
@@ -74,15 +73,15 @@ class ValidationTest extends BaseTest
 
         $rules = [
             'field1' => [
-                'format'   => FieldN::class,
+                'format' => FieldN::class,
                 'required' => true,
                 'position' => 2,
-                'length'   => 8,
-                'rules'    => [
+                'length' => 8,
+                'rules' => [
                     'required',
                     'date:dmY',
-                ]
-            ]
+                ],
+            ],
         ];
 
         $validator->make($rules);
@@ -96,7 +95,7 @@ class ValidationTest extends BaseTest
         $validator = new Validation();
 
         $rules = [
-            'no_rule' => [ ]
+            'no_rule' => [],
         ];
 
         $validator->make($rules);

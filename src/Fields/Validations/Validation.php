@@ -1,9 +1,9 @@
 <?php
 
-namespace Convenia\AleloOrder\Fields\Validations;
+namespace Convenia\AleloVt\Fields\Validations;
 
-use Convenia\AleloOrder\Exceptions\ValidatorException;
-use Convenia\AleloOrder\Exceptions\ValidatorInvalidRuleException;
+use Convenia\AleloVt\Exceptions\ValidatorException;
+use Convenia\AleloVt\Exceptions\ValidatorInvalidRuleException;
 use Stringy\Stringy;
 use DateTime;
 
@@ -13,21 +13,21 @@ use DateTime;
 class Validation
 {
     /**
-     * Array of rules
+     * Array of rules.
      *
      * @var array
      */
     protected $rules;
 
     /**
-     * Inform if the validator fails or not
+     * Inform if the validator fails or not.
      *
      * @var bool
      */
     protected $valid = true;
 
     /**
-     * Validate the value based on rules
+     * Validate the value based on rules.
      *
      * @param array $rules
      */
@@ -44,6 +44,7 @@ class Validation
 
     /**
      * @param array $data
+     *
      * @throws ValidatorException
      * @throws ValidatorInvalidRuleException
      */
@@ -70,7 +71,7 @@ class Validation
                 }
 
                 $methodName = Stringy::create($rule);
-                $methodName = (string)$methodName->toTitleCase();
+                $methodName = (string) $methodName->toTitleCase();
                 $this->methodExists($methodName);
 
                 $valid = $this->{'validate'.$methodName}($data, $ruleIndex);
@@ -80,7 +81,7 @@ class Validation
     }
 
     /**
-     * Validate if the $ruleIndex is present
+     * Validate if the $ruleIndex is present.
      *
      * @param $attributes
      * @param $ruleIndex
@@ -93,11 +94,12 @@ class Validation
     }
 
     /**
-     * Validate if given string is a valid date format
+     * Validate if given string is a valid date format.
      *
      * @param array $attributes
      * @param $ruleIndex
      * @param $ruleParams
+     *
      * @return bool
      */
     protected function validateDate(array $attributes, $ruleIndex, $ruleParams)
@@ -111,11 +113,13 @@ class Validation
     }
 
     /**
-     * Check if method exists
+     * Check if method exists.
      *
      * @param $methodName
+     *
      * @return bool
-     * @throws \Convenia\AleloOrder\Exceptions\ValidatorInvalidRuleException
+     *
+     * @throws \Convenia\AleloVt\Exceptions\ValidatorInvalidRuleException
      */
     protected function methodExists($methodName)
     {
@@ -139,7 +143,7 @@ class Validation
         }
 
         if ($state === false) {
-            throw new ValidatorException('Rule "'.$rule. '" fails for field '.$field. '"'.$data[$field].'"');
+            throw new ValidatorException('Rule "'.$rule.'" fails for field '.$field.'"'.$data[$field].'"');
         }
     }
 

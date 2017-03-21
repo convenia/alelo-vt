@@ -1,9 +1,9 @@
 <?php
 
-namespace Convenia\AleloOrder\Tests\Registries;
+namespace Convenia\AleloVt\Tests\Registries;
 
-use Convenia\AleloOrder\Tests\BaseTest;
-use Convenia\AleloOrder\Registries\HeaderRegistry;
+use Convenia\AleloVt\Tests\BaseTest;
+use Convenia\AleloVt\Registries\HeaderRegistry;
 
 /**
  * Class HeaderRegistryTest.
@@ -11,7 +11,7 @@ use Convenia\AleloOrder\Registries\HeaderRegistry;
 class HeaderRegistryTest extends BaseTest
 {
     /**
-     * @expectedException \Convenia\AleloOrder\Exceptions\FieldNotExistsException
+     * @expectedException \Convenia\AleloVt\Exceptions\FieldNotExistsException
      */
     public function test_field_not_exists()
     {
@@ -26,7 +26,7 @@ class HeaderRegistryTest extends BaseTest
                 'accrualMonth' => '052016',
                 'custom' => 'qualquercoisa',
                 'registryId' => 1,
-                'invalid_field' => '1'
+                'invalid_field' => '1',
             ]
         );
     }
@@ -43,12 +43,12 @@ class HeaderRegistryTest extends BaseTest
                 'orderType' => 1,
                 'accrualMonth' => '052016',
                 'custom' => 'qualquercoisa',
-                'registryId' => 1
+                'registryId' => 1,
             ]
         );
 
         $expected = '005052016A001RAZAO SOCIAL COM CARACTERES INVALID0531568400013400000000000000001234560000000000000021052016QUALQUERCOISA     007                                                                                                                                                                                                                                                                           000001';
 
-        $this->assertEquals($expected, (string)$header);
+        $this->assertEquals($expected, (string) $header);
     }
 }

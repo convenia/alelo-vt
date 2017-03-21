@@ -1,9 +1,9 @@
 <?php
 
-namespace Convenia\AleloOrder\Interfaces;
+namespace Convenia\AleloVt\Interfaces;
 
 /**
- * Interface AleloOrderInterface.
+ * Interface AleloVtInterface.
  */
 interface AleloOrderInterface
 {

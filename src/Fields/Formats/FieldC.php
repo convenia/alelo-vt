@@ -1,8 +1,8 @@
 <?php
 
-namespace Convenia\AleloOrder\Fields\Formats;
+namespace Convenia\AleloVt\Fields\Formats;
 
-use Convenia\AleloOrder\Fields\Field;
+use Convenia\AleloVt\Fields\Field;
 
 /**
  * Class FieldC.

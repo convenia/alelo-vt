@@ -1,8 +1,8 @@
 <?php
 
-namespace Convenia\AleloOrder\Fields;
+namespace Convenia\AleloVt\Fields;
 
-use Convenia\AleloOrder\Interfaces\FieldInterface;
+use Convenia\AleloVt\Interfaces\FieldInterface;
 use Stringy\Stringy as S;
 
 /**

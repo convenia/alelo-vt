@@ -1,6 +1,6 @@
 <?php
 
-namespace Convenia\AleloOrder\Exceptions;
+namespace Convenia\AleloVt\Exceptions;
 
 class RegistryTooShortException extends \Exception
 {

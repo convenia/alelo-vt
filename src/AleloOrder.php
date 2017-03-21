@@ -1,18 +1,20 @@
 <?php
 
-namespace Convenia\AleloOrder;
+namespace Convenia\AleloVt;
 
-use Convenia\AleloOrder\Interfaces\AleloOrderInterface;
-use Convenia\AleloOrder\Registries\BranchRegistry;
-use Convenia\AleloOrder\Registries\EmployeeRegistry;
-use Convenia\AleloOrder\Registries\HeaderRegistry;
-use Convenia\AleloOrder\Registries\TraillerRegistry;
+use Convenia\AleloVt\Interfaces\AleloVtInterface;
+use Convenia\AleloVt\Registries\AddressesRegistry;
+use Convenia\AleloVt\Registries\BenefitRegistry;
+use Convenia\AleloVt\Registries\ResidenceRegistry;
+use Convenia\AleloVt\Registries\UserRegistry;
+use Convenia\AleloVt\Registries\HeaderRegistry;
+use Convenia\AleloVt\Registries\TraillerRegistry;
 use Stringy\Stringy;
 
 /**
- * Class AleloOrder.
+ * Class AleloVt.
  */
-class AleloOrder implements AleloOrderInterface
+class AleloOrder implements AleloVtInterface
 {
     /**
      * @var Stringy
@@ -20,21 +22,15 @@ class AleloOrder implements AleloOrderInterface
     protected $fileLayout;
 
     /**
-     * @var HeaderRegistry
-     */
-    protected $header;
-
-    /**
-     * @var BranchRegistry
-     */
-    protected $branch;
-
-    /**
-     * Array of EmployeeRegisty
-     *
      * @var array
      */
-    protected $employees = [];
+    protected $registries;
+
+    protected $addresses = [];
+    protected $users = [];
+    protected $benefits = [];
+    protected $residences = [];
+    protected $adicionals = [];
 
     /**
      * @var TraillerRegistry
@@ -47,15 +43,8 @@ class AleloOrder implements AleloOrderInterface
     protected $autoBranchFill = true;
 
     /**
-     * @var array
-     */
-    protected $validProductTypes = [
-        'AVV' => '1',
-        'RVV' => '2',
-    ];
-
-    /**
-     * AleloOrder constructor.
+     * AleloVt constructor.
+     *
      * @param array $headerData
      */
     public function __construct(array $headerData)
@@ -66,60 +55,72 @@ class AleloOrder implements AleloOrderInterface
 
         $headerData['registryId'] = 1;
 
-        $this->header = new HeaderRegistry($headerData);
-        $this->fileLayout = Stringy::create('');
+        $this->registries[] = new HeaderRegistry($headerData);
+        $fileLayout = $this->fileLayout = Stringy::create('');
+    }
 
-        if ($this->autoBranchFill) {
-            $this->generateBranchRegistryFromHeader($headerData);
+    /**
+     * @param array $addressData
+     *
+     * @return bool
+     */
+    public function addAddress(array $addressData)
+    {
+        $registryId = count($this->registries) + 1;
+        $fullData = array_merge(['registryId' => $registryId], $addressData);
+
+        $validate = new AddressesRegistry($fullData);
+        $this->addresses[] = $addressData;
+
+        return true;
+    }
+
+    public function addUser(array $userData)
+    {
+        $registryId = count($this->registries) + 1;
+        $fullData = array_merge(['registryId' => $registryId], $userData);
+
+        $validate = new UserRegistry($fullData);
+        $this->users[] = $userData;
+
+        return true;
+    }
+
+    public function addBenefit(array $benefitData)
+    {
+        $registryId = count($this->registries) + 1;
+        $fullData = array_merge(['registryId' => $registryId], $benefitData);
+
+        $validate = new BenefitRegistry($fullData);
+        $this->benefits[] = $benefitData;
+
+        return true;
+    }
+
+    public function addResidence(array $residenceData)
+    {
+        $registryId = count($this->registries) + 1;
+        $fullData = array_merge(['registryId' => $registryId], $residenceData);
+
+        $validate = new ResidenceRegistry($fullData);
+        $this->residences[] = $residenceData;
+
+        return true;
+    }
+
+    public function addRegistry($registry, $class)
+    {
+        $countPlusOne = count($this->registries) + 1;
+        $fullData = array_merge(['registryId' => $countPlusOne], $registry);
+        $object = new $class($fullData);
+        $this->registries[] = $object;
+    }
+
+    public function addRegistries($registries, $class)
+    {
+        foreach ($registries as $registry) {
+            $this->addRegistry($registry, $class);
         }
-    }
-
-    /**
-     * @param array $headerData
-     */
-    protected function generateBranchRegistryFromHeader(array $headerData)
-    {
-        $branchData = [
-            'aleloCompanyCod' => 00,
-            'branchCod' => '',
-            'cnpjBase' => substr($this->header->getField('cnpj'), 0, 8),
-            'cnpjBranch' => substr($this->header->getField('cnpj'), 8, 4),
-            'cnpjDigit' => substr($this->header->getField('cnpj'), 12, 2),
-            'firstContactName' => $headerData['name'],
-            'name' => $headerData['name'],
-            'registryId' => 2
-        ];
-
-        $branchData = new BranchRegistry($branchData);
-
-        $this->branch = $branchData;
-    }
-
-    /**
-     * @param array $employeeData
-     */
-    public function addEmployee(array $employeeData)
-    {
-        $registryId = 2+count($this->getAllEmployees())+1;
-        $employeeData = array_merge(['registryId' => $registryId], $employeeData);
-
-        $this->employees[] = new EmployeeRegistry($employeeData);
-    }
-
-    /**
-     * @return array
-     */
-    public function getAllEmployees()
-    {
-        return $this->employees;
-    }
-
-    /**
-     * @return int
-     */
-    public function employeesCount()
-    {
-        return count($this->getAllEmployees());
     }
 
     /**
@@ -129,18 +130,16 @@ class AleloOrder implements AleloOrderInterface
      */
     public function generate()
     {
+        $this->addRegistries($this->addresses, AddressesRegistry::class);
+        $this->addRegistries($this->users, UserRegistry::class);
+        $this->addRegistries($this->benefits, BenefitRegistry::class);
+        $this->addRegistries($this->residences, ResidenceRegistry::class);
+        //$this->addRegistries($this->addresses, AddressesRegistry::class);
         $this->generateTraillerRegistry();
-        $this->fileLayout = $this->fileLayout->append($this->header->__toString());
-        $this->fileLayout = $this->fileLayout->append(PHP_EOL);
-        $this->fileLayout = $this->fileLayout->append($this->branch->__toString());
-        $this->fileLayout = $this->fileLayout->append(PHP_EOL);
 
-        foreach ($this->getAllEmployees() as $employeeRegistry) {
-            $this->fileLayout = $this->fileLayout->append($employeeRegistry->__toString());
-            $this->fileLayout = $this->fileLayout->append(PHP_EOL);
+        foreach ($this->registries as $line) {
+            $this->fileLayout = $this->fileLayout->append($line->__toString());
         }
-
-        $this->fileLayout = $this->fileLayout->append($this->traillerRegistry->__toString());
 
         return (string) $this->fileLayout;
     }
@@ -150,28 +149,15 @@ class AleloOrder implements AleloOrderInterface
      */
     protected function generateTraillerRegistry()
     {
-        $this->traillerRegistry = new TraillerRegistry(
+        $this->registries[] = new TraillerRegistry(
             [
-                'employeeRegTotals' => $this->employeesCount(),
-                'orderTotal' => $this->orderTotal(),
-                'registryId' => count($this->getAllEmployees())+3,
+                'type1' => count($this->addresses),
+                'type2' => count($this->users),
+                'type3' => count($this->benefits),
+                'type4' => count($this->residences),
+                'type5' => 0,
+                'registryId' => count($this->registries) + 1,
             ]
         );
-        return $this->traillerRegistry;
-    }
-
-    /**
-     * @return int
-     */
-    protected function orderTotal()
-    {
-        $orderTotal = 0;
-
-        /** @var EmployeeRegistry $employee */
-        foreach ($this->getAllEmployees() as $employee) {
-            $orderTotal += $employee->getField('monthValue')->getValue();
-        }
-
-        return $orderTotal;
     }
 }

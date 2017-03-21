@@ -1,9 +1,9 @@
 <?php
 
-namespace Convenia\AleloOrder\Tests\Registries;
+namespace Convenia\AleloVt\Tests\Registries;
 
-use Convenia\AleloOrder\Registries\BranchRegistry;
-use Convenia\AleloOrder\Tests\BaseTest;
+use Convenia\AleloVt\Registries\BenefitRegistry;
+use Convenia\AleloVt\Tests\BaseTest;
 
 /**
  * Class BranchRegistryTest.
@@ -12,7 +12,7 @@ class BranchRegistryTest extends BaseTest
 {
     public function test_complete_fields()
     {
-        $header = new BranchRegistry(
+        $header = new BenefitRegistry(
             [
                 'registryType' => '',
                 'cnpjBase' => '',
@@ -41,6 +41,6 @@ class BranchRegistryTest extends BaseTest
 
         $expected = '0000000000000000000000000                                   0000                                                                           000000000000000000                                                                           000000000000000000                                                                           000000000000000000                                                   000000';
 
-        $this->assertEquals($expected, (string)$header);
+        $this->assertEquals($expected, (string) $header);
     }
 }

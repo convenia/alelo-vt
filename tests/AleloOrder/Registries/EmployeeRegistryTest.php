@@ -1,9 +1,9 @@
 <?php
 
-namespace Convenia\AleloOrder\Tests\Registries;
+namespace Convenia\AleloVt\Tests\Registries;
 
-use Convenia\AleloOrder\Registries\EmployeeRegistry;
-use Convenia\AleloOrder\Tests\BaseTest;
+use Convenia\AleloVt\Registries\UserRegistry;
+use Convenia\AleloVt\Tests\BaseTest;
 
 /**
  * Class EmployeeRegistryTest.
@@ -12,7 +12,7 @@ class EmployeeRegistryTest extends BaseTest
 {
     public function test_complete_fields()
     {
-        $header = new EmployeeRegistry(
+        $header = new UserRegistry(
             [
                 'monthValue' => '10',
                 'employeeRegistry' => '1',
@@ -33,6 +33,6 @@ class EmployeeRegistryTest extends BaseTest
 
         $expected = '500000000010 1                                                                  08011985334022038711373817952    SSP                 SP    00000000000000011                                             0000000000000                                                            MOTHER NATURE                       0000000000000000000000000000 08052016 USERNAME                                      123456';
 
-        $this->assertEquals($expected, (string)$header);
+        $this->assertEquals($expected, (string) $header);
     }
 }
