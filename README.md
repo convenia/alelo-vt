@@ -81,7 +81,9 @@ $AleloVt = new AleloVt(
             'state' => 'SP',
 
         ]);
-
+```
+> gerar o arquivo
+```php
         $file = $AleloVt->generate();
 ```
 
