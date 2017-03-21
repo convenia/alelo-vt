@@ -1,6 +1,8 @@
 # integração Alelo com VT (Vale Transporte)
 
+
 [![Latest Stable Version](https://poser.pugx.org/convenia/alelo-vt/v/stable)](https://packagist.org/packages/convenia/alelo-vt)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6f936d69d94f4e5eaf67877b50ef1628)](https://www.codacy.com/app/euventura/alelo-vt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=convenia/alelo-vt&amp;utm_campaign=Badge_Grade)
 [![Total Downloads](https://poser.pugx.org/convenia/alelo-vt/downloads)](https://packagist.org/packages/convenia/alelo-vt)
 [![Latest Unstable Version](https://poser.pugx.org/convenia/alelo-vt/v/unstable)](https://packagist.org/packages/convenia/alelo-vt)
 [![License](https://poser.pugx.org/convenia/alelo-vt/license)](https://packagist.org/packages/convenia/alelo-vt)
