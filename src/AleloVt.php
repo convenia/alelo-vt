@@ -56,7 +56,7 @@ class AleloVt implements AleloVtInterface
         $headerData['registryId'] = 1;
 
         $this->registries[] = new HeaderRegistry($headerData);
-        $fileLayout = $this->fileLayout = Stringy::create('');
+        $this->fileLayout = Stringy::create('');
     }
 
     /**
@@ -69,7 +69,7 @@ class AleloVt implements AleloVtInterface
         $registryId = count($this->registries) + 1;
         $fullData = array_merge(['registryId' => $registryId], $addressData);
 
-        $validate = new AddressesRegistry($fullData);
+        new AddressesRegistry($fullData);
         $this->addresses[] = $addressData;
 
         return true;
@@ -80,7 +80,7 @@ class AleloVt implements AleloVtInterface
         $registryId = count($this->registries) + 1;
         $fullData = array_merge(['registryId' => $registryId], $userData);
 
-        $validate = new UserRegistry($fullData);
+        new UserRegistry($fullData);
         $this->users[] = $userData;
 
         return true;
@@ -91,7 +91,7 @@ class AleloVt implements AleloVtInterface
         $registryId = count($this->registries) + 1;
         $fullData = array_merge(['registryId' => $registryId], $benefitData);
 
-        $validate = new BenefitRegistry($fullData);
+        new BenefitRegistry($fullData);
         $this->benefits[] = $benefitData;
 
         return true;
@@ -102,7 +102,7 @@ class AleloVt implements AleloVtInterface
         $registryId = count($this->registries) + 1;
         $fullData = array_merge(['registryId' => $registryId], $residenceData);
 
-        $validate = new ResidenceRegistry($fullData);
+        new ResidenceRegistry($fullData);
         $this->residences[] = $residenceData;
 
         return true;
