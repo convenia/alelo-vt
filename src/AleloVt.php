@@ -134,11 +134,11 @@ class AleloVt implements AleloVtInterface
         $this->addRegistries($this->users, UserRegistry::class);
         $this->addRegistries($this->benefits, BenefitRegistry::class);
         $this->addRegistries($this->residences, ResidenceRegistry::class);
-        //$this->addRegistries($this->addresses, AddressesRegistry::class);
         $this->generateTraillerRegistry();
 
         foreach ($this->registries as $line) {
             $this->fileLayout = $this->fileLayout->append($line->__toString());
+            $this->fileLayout = $this->fileLayout->append("\n");
         }
 
         return (string) $this->fileLayout;
