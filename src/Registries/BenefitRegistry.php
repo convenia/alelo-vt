@@ -18,7 +18,7 @@ class BenefitRegistry extends Registry
             'format' => FieldN::class,
             'position' => 1,
             'length' => 1,
-            'defaultValue' => 1,
+            'defaultValue' => 3,
         ],
         'cnpj' => [
             'format' => FieldN::class,
