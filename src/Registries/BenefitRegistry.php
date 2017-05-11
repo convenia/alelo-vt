@@ -2,6 +2,7 @@
 
 namespace Convenia\AleloVt\Registries;
 
+use Convenia\AleloVt\Fields\Formats\FieldCode;
 use Convenia\AleloVt\Fields\Formats\FieldN;
 use Convenia\AleloVt\Fields\Formats\FieldC;
 
@@ -37,7 +38,7 @@ class BenefitRegistry extends Registry
             ],
         ],
         'id' => [
-            'format' => FieldC::class,
+            'format' => FieldCode::class,
             'position' => 31,
             'length' => 6,
             'rules' => [
