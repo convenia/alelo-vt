@@ -37,7 +37,7 @@ class BenefitRegistry extends Registry
             ],
         ],
         'id' => [
-            'format' => FieldN::class,
+            'format' => FieldC::class,
             'position' => 31,
             'length' => 6,
             'rules' => [
