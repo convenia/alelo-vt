@@ -3,6 +3,7 @@
 namespace Convenia\AleloVt;
 
 use Convenia\AleloVt\Interfaces\AleloVtInterface;
+use Convenia\AleloVt\Registries\AdditionalRegistry;
 use Convenia\AleloVt\Registries\AddressesRegistry;
 use Convenia\AleloVt\Registries\BenefitRegistry;
 use Convenia\AleloVt\Registries\ResidenceRegistry;
@@ -108,6 +109,18 @@ class AleloVt implements AleloVtInterface
         return true;
     }
 
+    public function addAdditional(array $additionalData)
+    {
+
+        $registryId = count($this->registries) + 1;
+        $fullData = array_merge(['registryId' => $registryId], $additionalData);
+
+        new AdditionalRegistry($fullData);
+        $this->adicionals[] = $additionalData;
+
+        return true;
+    }
+
     public function addRegistry($registry, $class)
     {
         $countPlusOne = count($this->registries) + 1;
@@ -134,6 +147,8 @@ class AleloVt implements AleloVtInterface
         $this->addRegistries($this->users, UserRegistry::class);
         $this->addRegistries($this->benefits, BenefitRegistry::class);
         $this->addRegistries($this->residences, ResidenceRegistry::class);
+        $this->addRegistries($this->adicionals, AdditionalRegistry::class);
+
         $this->generateTraillerRegistry();
 
         foreach ($this->registries as $line) {
@@ -155,7 +170,7 @@ class AleloVt implements AleloVtInterface
                 'type2' => count($this->users),
                 'type3' => count($this->benefits),
                 'type4' => count($this->residences),
-                'type5' => 0,
+                'type5' => count($this->adicionals),
                 'registryId' => count($this->registries) + 1,
             ]
         );
